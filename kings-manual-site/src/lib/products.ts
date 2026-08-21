@@ -24,8 +24,7 @@ export const VOLUMES: Product[] = [
     title: "Volume I — The Making of a Man",
     subtitle: "Biology, mind, and development from conception to maturity",
     price: 39,
-    cover:
-      "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__1/image-0d79943b-3a90-4557-af23-28e1eb1686e9.png?auto=format%2Ccompress&cs=srgb&w=1280&fit=max&s=aa182dcffe69b6f06d09fb18a5146a8d",
+        cover: "/covers/vol1.webp",
     color: "#1e3a5f",
     description:
       "From the evolutionary origins of the male body through puberty, the adolescent brain, mental health, personality, and the science of physical performance and longevity — Volume I is the biological and psychological foundation the rest of the encyclopedia builds on.",
@@ -109,8 +108,7 @@ export const VOLUMES: Product[] = [
     title: "Volume II — Man in Civilization",
     subtitle: "History, philosophy, religion, and culture",
     price: 39,
-    cover:
-      "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__8/-t-e-x-t_-t-o_-i-m-a-g-e-fb9e36d3-0a7c-405c-9939-137e40589870.png?auto=format%2Ccompress&cs=srgb&w=1280&fit=max&s=795568893d83b082836e456016902cc2",
+        cover: "/covers/vol2.webp",
     color: "#5c1a2b",
     description:
       "A sweeping tour of how men have lived, worked, fought, and believed across every era and continent — from prehistoric societies through the great philosophical and religious traditions that shaped what manhood has meant.",
@@ -186,8 +184,7 @@ export const VOLUMES: Product[] = [
     title: "Volume III — Man in Practice",
     subtitle: "Relationships, work, wealth, and legacy",
     price: 39,
-    cover:
-      "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__7/image-dd0ff48c-09b3-44ff-9780-b83c3b14d423.png?auto=format%2Ccompress&cs=srgb&w=1280&fit=max&s=372648ebff9ac393df1238499370a198",
+        cover: "/covers/vol3.webp",
     color: "#1b4332",
     description:
       "The applied volume: friendship and marriage, leadership and enterprise, money and investing, and a decade-by-decade map of a man's life from childhood through old age — closing with honor, service, and what a man leaves behind.",
@@ -278,8 +275,7 @@ export const BUNDLE: Product = {
   subtitle: "All 116 chapters. Every part. One price.",
   price: 97,
   compareAt: 117,
-  cover:
-    "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__7/-t-e-x-t_-t-o_-i-m-a-g-e-84c5ac08-7fe1-44f3-9a11-2778733be89e.png?auto=format%2Ccompress&cs=srgb&w=1280&fit=max&s=7fe8b7efde60a884ddc62f87129bb6c2",
+  cover: "/covers/bundle.webp",
   color: "#8a6d1f",
   description:
     "The full encyclopedia — biology and mind, history and philosophy, and practical mastery of relationships, career, and wealth — in one complete set. Built to be read once and referenced for a lifetime.",
@@ -297,8 +293,7 @@ export const WORKBOOK = {
   slug: "workbook",
   title: "The Companion Workbook",
   subtitle: "128 pages of reflection prompts and exercises — free",
-  cover:
-    "https://ai-toolkit-generations.imgix.net/content/-t-e-x-t_-t-o_-i-m-a-g-e-v1/media__6/image-5bb4014b-f780-4e52-aca2-13eaa5a729cf.png?auto=format%2Ccompress&cs=srgb&w=1280&fit=max&s=73fb23533fd016bd9bec99ab4a9a1a0e",
+  cover: "/covers/workbook.webp",
   gumroadUrl: "https://bluehorizon7.gumroad.com/l/xpieta",
 };
 
