@@ -26,6 +26,7 @@ export const VOLUMES: Product[] = [
     price: 39,
         cover: "/covers/vol1.webp",
     color: "#1e3a5f",
+    gumroadUrl: "https://bluehorizon7.gumroad.com/l/kwqvi",
     description:
       "From the evolutionary origins of the male body through puberty, the adolescent brain, mental health, personality, and the science of physical performance and longevity — Volume I is the biological and psychological foundation the rest of the encyclopedia builds on.",
     chapters: "35 chapters across 6 parts",
@@ -110,6 +111,7 @@ export const VOLUMES: Product[] = [
     price: 39,
         cover: "/covers/vol2.webp",
     color: "#5c1a2b",
+    gumroadUrl: "https://bluehorizon7.gumroad.com/l/lehgd",
     description:
       "A sweeping tour of how men have lived, worked, fought, and believed across every era and continent — from prehistoric societies through the great philosophical and religious traditions that shaped what manhood has meant.",
     chapters: "37 chapters across 4 parts",
@@ -186,6 +188,7 @@ export const VOLUMES: Product[] = [
     price: 39,
         cover: "/covers/vol3.webp",
     color: "#1b4332",
+    gumroadUrl: "https://bluehorizon7.gumroad.com/l/wsohc",
     description:
       "The applied volume: friendship and marriage, leadership and enterprise, money and investing, and a decade-by-decade map of a man's life from childhood through old age — closing with honor, service, and what a man leaves behind.",
     chapters: "44 chapters across 5 parts",
