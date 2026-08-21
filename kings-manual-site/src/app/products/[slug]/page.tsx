@@ -112,8 +112,8 @@ export default async function ProductPage({
                   </div>
                   <div className="mt-4">
                     <BuyButton
-                      slug={product.slug}
-                      label="Buy Now — Secure Checkout"
+                    gumroadUrl={product.gumroadUrl ?? "https://bluehorizon7.gumroad.com/l/sdapx"}
+                    label="Buy Now — Secure Checkout"
                     />
                   </div>
                   <p className="mt-3 text-xs text-ink/40">
