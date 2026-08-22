@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: "/covers/bundle.webp",
-        width: 1200,
-        height: 1600,
+        url: "/covers/bundle-3d.webp",
+        width: 1421,
+        height: 809,
         alt: "The King's Manual — The Complete 3-Volume Set",
       },
     ],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/covers/bundle.webp"],
+    images: ["/covers/bundle-3d.webp"],
   },
   icons: {
     icon: "/icon.svg",
