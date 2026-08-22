@@ -25,9 +25,11 @@ export default function Hero() {
             The reference work every man wishes he&rsquo;d been given.
           </h1>
           <p className="mt-5 max-w-md text-[17px] leading-relaxed text-foreground/75">
-            116 chapters connecting biology, history, philosophy,
-            relationships, work, wealth, and legacy — into one coherent
-            system.
+            Most advice on being a man is folklore repeated with confidence —
+            a podcast take, a guru&rsquo;s opinion, a 21-day-habit myth passed
+            around until it sounds true. This is 116 chapters built the other
+            way: real research, 2,500 years of philosophy, and a consistent
+            framework you can actually trust when it matters.
           </p>
           <p className="mt-4 text-sm text-muted">
             3 digital volumes &middot; 500+ pages &middot; PDF &middot;
