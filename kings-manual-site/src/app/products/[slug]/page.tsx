@@ -157,12 +157,12 @@ export default async function ProductPage({
                       href={`/products/${p.slug}`}
                       className="group block rounded-sm border border-[#d7d1c6] bg-white p-4 transition-colors duration-300 hover:border-gold/60"
                     >
-                      <div className="mx-auto w-24">
+                      <div className="mx-auto flex h-24 w-full items-center justify-center">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={p.cover}
                           alt={p.title}
-                          className="w-full drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:-translate-y-1"
+                          className="max-h-24 max-w-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:-translate-y-1"
                         />
                       </div>
                       <p className="mt-3 text-center text-xs text-ink/70 group-hover:text-gold">
