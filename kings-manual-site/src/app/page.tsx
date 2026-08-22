@@ -41,15 +41,24 @@ const FRAMEWORK = [
 ];
 
 const USE_CASES = [
-  { text: "Understand testosterone without the folklore", volume: "Volume I" },
-  { text: "Prepare for a difficult negotiation", volume: "Volume III" },
-  { text: "Build a more durable training practice", volume: "Volume I" },
-  { text: "Think clearly about marriage and fatherhood", volume: "Volume III" },
-  { text: "Understand grief, depression, anxiety, and resilience", volume: "Volume I" },
-  { text: "Create a plan for financial independence", volume: "Volume III" },
-  { text: "Evaluate a career or business decision", volume: "Volume III" },
-  { text: "Navigate the major stages of adult life", volume: "Volume III" },
-  { text: "Consider legacy and estate planning", volume: "Volume III" },
+  {
+    text: "Your habit keeps failing around day three. Learn why the 21-day rule is a myth — and what actually builds one (Ch. 26)",
+    volume: "Volume I",
+  },
+  {
+    text: "You're stalling before a hard conversation. Learn why waiting to feel confident has it backwards (Ch. 25)",
+    volume: "Volume I",
+  },
+  {
+    text: "You feel like you're drifting. Build purpose the way the evidence says it actually forms — gradually, not in an epiphany (Ch. 22)",
+    volume: "Volume I",
+  },
+  { text: "Prepare for a negotiation with a framework, not guesswork", volume: "Volume III" },
+  { text: "Think clearly about marriage and fatherhood before the moment arrives", volume: "Volume III" },
+  { text: "Understand grief, depression, anxiety, and resilience in plain language", volume: "Volume I" },
+  { text: "Build a plan toward financial independence, decade by decade", volume: "Volume III" },
+  { text: "Weigh a career or business decision against 2,500 years of tested judgment", volume: "Volume III" },
+  { text: "Know what you want your life to have meant, before you run out of time to act on it", volume: "Volume III" },
 ];
 
 const ALL_PARTS = getParts(BUNDLE);
@@ -153,7 +162,8 @@ export default function Home() {
                 What It&rsquo;s For
               </p>
               <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
-                Built to be consulted when life asks a difficult question.
+                The moment you actually need it, this is what it&rsquo;s
+                there for.
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -222,10 +232,12 @@ export default function Home() {
                 The Complete Set
               </span>
               <h2 className="mt-4 font-display text-3xl text-ink md:text-4xl">
-                All three volumes. One complete reference.
+                Stop assembling your worldview from fragments.
               </h2>
               <p className="mt-4 leading-relaxed text-foreground/75">
-                {BUNDLE.description}
+                {BUNDLE.description} One reference, cited and cross-checked,
+                that you open when the question actually matters — instead of
+                trusting whichever algorithm served you an opinion this week.
               </p>
               <ul className="mt-6 space-y-2 text-[17px] text-foreground/75">
                 {BUNDLE.highlights.map((h) => (
@@ -315,11 +327,13 @@ export default function Home() {
         <section className="border-t border-line py-24">
           <Reveal className="mx-auto max-w-2xl px-6 text-center">
             <h2 className="font-display text-3xl leading-snug text-ink md:text-4xl">
-              Stop piecing it together from fragments.
+              You&rsquo;re going to face these questions either way.
             </h2>
             <p className="mx-auto mt-5 max-w-lg text-foreground/70">
-              Get one coherent reference for the questions that shape a
-              man&rsquo;s life. 116 chapters. Three volumes. One price.
+              The only choice is whether you meet them with a coherent,
+              evidence-based reference — or the same scattered fragments
+              you&rsquo;ve been running on. 116 chapters. Three volumes. One
+              price, paid once.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
