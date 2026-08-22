@@ -30,7 +30,7 @@ const ITEMS: FAQItem[] = [
     number: "03",
     question: "Can I buy one volume instead of all three?",
     answer:
-      "Yes — each volume stands on its own at $39: Volume I covers biology and mind, Volume II covers history and philosophy, Volume III covers relationships, work, and wealth. The Complete Set bundles all three for $97, a $22 saving over buying them separately.",
+      "Yes — each volume stands on its own at $39: Volume I covers biology and mind, Volume II covers history and philosophy, Volume III covers relationships, work, and wealth. The Complete Set bundles all three for $97 — $117 if bought separately, so you save $20.",
   },
   {
     id: "worth-it",
@@ -105,7 +105,7 @@ export default function FAQ() {
                 </motion.div>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-[#e5e1d8]" />
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-[#d7d1c6]" />
               <motion.div
                 className="absolute bottom-0 left-0 h-px origin-left bg-gold"
                 initial={{ scaleX: 0 }}

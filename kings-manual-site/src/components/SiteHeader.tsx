@@ -17,7 +17,7 @@ export default function SiteHeader() {
   }, []);
 
   const navItems = [
-    { href: "#whats-inside", label: "What's Inside" },
+    { href: "#contents", label: "The Volumes" },
     { href: "#offer", label: "The Complete Set" },
     { href: "#workbook", label: "Free Workbook" },
     { href: "#faq", label: "FAQ" },
@@ -30,7 +30,7 @@ export default function SiteHeader() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`sticky top-0 z-50 border-b transition-all duration-300 ${
         scrolled
-          ? "border-[#e5e1d8] bg-white/95 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] backdrop-blur-md"
+          ? "border-[#d7d1c6] bg-white/95 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] backdrop-blur-md"
           : "border-transparent bg-white/70 py-4 backdrop-blur-sm"
       }`}
     >
@@ -93,7 +93,7 @@ export default function SiteHeader() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="mt-4 space-y-1 border-t border-[#e5e1d8] px-6 pt-4 pb-2 md:hidden"
+          className="mt-4 space-y-1 border-t border-[#d7d1c6] px-6 pt-4 pb-2 md:hidden"
         >
           {navItems.map((item) => (
             <Link

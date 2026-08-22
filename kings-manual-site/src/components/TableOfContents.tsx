@@ -8,7 +8,7 @@ export default function TableOfContents({ parts }: { parts: Part[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-[#e5e1d8] rounded-sm border border-[#e5e1d8] bg-white">
+    <div className="divide-y divide-[#d7d1c6] rounded-sm border border-[#d7d1c6] bg-white">
       {parts.map((part, i) => {
         const open = openIndex === i;
         return (
