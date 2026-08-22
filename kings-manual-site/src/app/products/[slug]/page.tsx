@@ -96,7 +96,7 @@ export default async function ProductPage({
                   ))}
                 </ul>
 
-                <div className="mt-8 rounded-sm border border-[#e5e1d8] bg-white p-6">
+                <div className="mt-8 rounded-sm border border-[#d7d1c6] bg-white p-6">
                   <div className="flex items-center gap-3">
                     <span className="font-display text-3xl text-gold">
                       ${product.price}
@@ -112,8 +112,8 @@ export default async function ProductPage({
                   </div>
                   <div className="mt-4">
                     <BuyButton
-                    gumroadUrl={product.gumroadUrl ?? "https://bluehorizon7.gumroad.com/l/sdapx"}
-                    label="Buy Now — Secure Checkout"
+                      gumroadUrl={product.gumroadUrl ?? "https://thekingsmanual.gumroad.com/l/sdapx"}
+                      label="Buy Now — Secure Checkout"
                     />
                   </div>
                   <p className="mt-3 text-xs text-ink/40">
@@ -127,7 +127,7 @@ export default async function ProductPage({
         </section>
 
         {parts.length > 0 && (
-          <section className="border-t border-[#e5e1d8] py-16">
+          <section className="border-t border-[#d7d1c6] py-16">
             <div className="mx-auto max-w-4xl px-6">
               <Reveal>
                 <p className="text-xs font-medium uppercase tracking-[0.3em] text-gold">
@@ -144,7 +144,7 @@ export default async function ProductPage({
           </section>
         )}
 
-        <section className="border-t border-[#e5e1d8] py-16">
+        <section className="border-t border-[#d7d1c6] py-16">
           <div className="mx-auto max-w-6xl px-6">
             <Reveal>
               <h2 className="font-display text-xl text-ink">Explore the full set</h2>
@@ -155,7 +155,7 @@ export default async function ProductPage({
                   <Reveal key={p.slug} delay={i * 0.08}>
                     <Link
                       href={`/products/${p.slug}`}
-                      className="group block rounded-sm border border-[#e5e1d8] bg-white p-4 transition-colors duration-300 hover:border-gold/60"
+                      className="group block rounded-sm border border-[#d7d1c6] bg-white p-4 transition-colors duration-300 hover:border-gold/60"
                     >
                       <div className="mx-auto w-24">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
