@@ -24,9 +24,9 @@ export const VOLUMES: Product[] = [
     title: "Volume I — The Making of a Man",
     subtitle: "Biology, mind, and development from conception to maturity",
     price: 39,
-        cover: "/covers/vol1.webp",
+    cover: "/covers/vol1.webp",
     color: "#1e3a5f",
-    gumroadUrl: "https://bluehorizon7.gumroad.com/l/kwqvi",
+    gumroadUrl: "https://thekingsmanual.gumroad.com/l/kwqvi",
     description:
       "From the evolutionary origins of the male body through puberty, the adolescent brain, mental health, personality, and the science of physical performance and longevity — Volume I is the biological and psychological foundation the rest of the encyclopedia builds on.",
     chapters: "35 chapters across 6 parts",
@@ -109,9 +109,9 @@ export const VOLUMES: Product[] = [
     title: "Volume II — Man in Civilization",
     subtitle: "History, philosophy, religion, and culture",
     price: 39,
-        cover: "/covers/vol2.webp",
+    cover: "/covers/vol2.webp",
     color: "#5c1a2b",
-    gumroadUrl: "https://bluehorizon7.gumroad.com/l/lehgd",
+    gumroadUrl: "https://thekingsmanual.gumroad.com/l/lehgd",
     description:
       "A sweeping tour of how men have lived, worked, fought, and believed across every era and continent — from prehistoric societies through the great philosophical and religious traditions that shaped what manhood has meant.",
     chapters: "37 chapters across 4 parts",
@@ -186,9 +186,9 @@ export const VOLUMES: Product[] = [
     title: "Volume III — Man in Practice",
     subtitle: "Relationships, work, wealth, and legacy",
     price: 39,
-        cover: "/covers/vol3.webp",
+    cover: "/covers/vol3.webp",
     color: "#1b4332",
-    gumroadUrl: "https://bluehorizon7.gumroad.com/l/wsohc",
+    gumroadUrl: "https://thekingsmanual.gumroad.com/l/wsohc",
     description:
       "The applied volume: friendship and marriage, leadership and enterprise, money and investing, and a decade-by-decade map of a man's life from childhood through old age — closing with honor, service, and what a man leaves behind.",
     chapters: "44 chapters across 5 parts",
@@ -285,11 +285,11 @@ export const BUNDLE: Product = {
   chapters: "116 chapters across 15 parts",
   highlights: [
     "Everything in Volumes I, II, and III",
-    "Save $22 versus buying each volume separately",
+    "Save $20 versus buying each volume separately",
     "Companion Workbook included free",
     "Lifetime access, all future revisions included",
   ],
-  gumroadUrl: "https://bluehorizon7.gumroad.com/l/sdapx",
+  gumroadUrl: "https://thekingsmanual.gumroad.com/l/sdapx",
 };
 
 export const WORKBOOK = {
@@ -297,7 +297,7 @@ export const WORKBOOK = {
   title: "The Companion Workbook",
   subtitle: "128 pages of reflection prompts and exercises — free",
   cover: "/covers/workbook.webp",
-  gumroadUrl: "https://bluehorizon7.gumroad.com/l/xpieta",
+  gumroadUrl: "https://thekingsmanual.gumroad.com/l/xpieta",
 };
 
 export const ALL_PRODUCTS: Product[] = [...VOLUMES, BUNDLE];
