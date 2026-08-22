@@ -278,7 +278,7 @@ export const BUNDLE: Product = {
   subtitle: "All 116 chapters. Every part. One price.",
   price: 97,
   compareAt: 117,
-  cover: "/covers/bundle.webp",
+  cover: "/covers/bundle-3d.webp",
   color: "#8a6d1f",
   description:
     "The full encyclopedia — biology and mind, history and philosophy, and practical mastery of relationships, career, and wealth — in one complete set. Built to be read once and referenced for a lifetime.",
