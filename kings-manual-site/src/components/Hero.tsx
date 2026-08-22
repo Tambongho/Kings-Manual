@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { VOLUMES, BUNDLE, WORKBOOK } from "@/lib/products";
+import { BUNDLE } from "@/lib/products";
 import Reveal from "@/components/Reveal";
 
 const PROOF = [
@@ -80,74 +80,19 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Product presentation — physical set on a table, per reference */}
+        {/* Product presentation — real 3D hardcover render, used consistently sitewide */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto flex h-[420px] w-full max-w-lg items-end justify-center overflow-hidden rounded-[8px] sm:h-[480px]"
+          className="relative mx-auto w-full max-w-lg"
         >
-          {/* faded roman numerals backdrop */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between px-4 pt-4 font-display text-[6rem] font-normal leading-none text-ink/[0.07] sm:text-[8rem]"
-          >
-            <span>I</span>
-            <span>II</span>
-            <span>III</span>
-          </div>
-
-          {/* table surface */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%]"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(90,58,30,0) 0%, rgba(90,58,30,0.18) 35%, rgba(74,46,24,0.38) 100%)",
-            }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/covers/bundle-3d.webp"
+            alt="The King's Manual — Volumes I, II, and III hardcover set"
+            className="w-full drop-shadow-[0_35px_45px_rgba(20,22,21,0.28)]"
           />
-
-          {/* standing books */}
-          <div className="relative z-10 mb-[26%] flex items-end">
-            <div className="relative -mr-6 w-20 -rotate-[8deg] overflow-hidden rounded-[2px] shadow-[0_30px_45px_-20px_rgba(20,22,21,0.5)] sm:w-24">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={VOLUMES[0].cover}
-                alt={VOLUMES[0].title}
-                className="w-full"
-              />
-            </div>
-
-            <div className="relative z-10 w-24 -rotate-[1deg] overflow-hidden rounded-[2px] shadow-[0_35px_55px_-18px_rgba(20,22,21,0.55)] sm:w-28">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={VOLUMES[1].cover}
-                alt={VOLUMES[1].title}
-                className="w-full"
-              />
-            </div>
-
-            <div className="relative -ml-4 w-16 rotate-[7deg] self-end overflow-hidden rounded-[2px] shadow-[0_25px_40px_-18px_rgba(20,22,21,0.5)] sm:w-[76px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={WORKBOOK.cover}
-                alt={WORKBOOK.title}
-                className="w-full"
-              />
-            </div>
-          </div>
-
-          {/* Volume III lying flat in front */}
-          <div className="absolute bottom-[8%] left-1/2 z-20 w-[42%] -translate-x-1/2 rotate-[-2deg]">
-            <div className="relative origin-bottom overflow-hidden rounded-[3px] shadow-[0_20px_40px_-12px_rgba(20,22,21,0.5)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={VOLUMES[2].cover}
-                alt={VOLUMES[2].title}
-                className="w-full origin-bottom scale-y-[0.55]"
-              />
-            </div>
-          </div>
 
           {/* PDF badge */}
           <div className="absolute right-4 top-4 z-30 flex items-center gap-1.5 rounded-full border border-line-dark bg-paper/90 px-3 py-1.5 text-[11px] font-medium tracking-wide text-ink/70 shadow-sm backdrop-blur-sm">
