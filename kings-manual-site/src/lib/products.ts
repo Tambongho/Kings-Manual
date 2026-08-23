@@ -24,7 +24,7 @@ export const VOLUMES: Product[] = [
     title: "Volume I — The Making of a Man",
     subtitle: "Biology, mind, and development from conception to maturity",
     price: 39,
-    cover: "/covers/vol1.webp",
+    cover: "/covers/vol1-3d.webp",
     color: "#1e3a5f",
     gumroadUrl: "https://thekingsmanual.gumroad.com/l/kwqvi",
     description:
@@ -109,7 +109,7 @@ export const VOLUMES: Product[] = [
     title: "Volume II — Man in Civilization",
     subtitle: "History, philosophy, religion, and culture",
     price: 39,
-    cover: "/covers/vol2.webp",
+    cover: "/covers/vol2-3d.webp",
     color: "#5c1a2b",
     gumroadUrl: "https://thekingsmanual.gumroad.com/l/lehgd",
     description:
@@ -186,7 +186,7 @@ export const VOLUMES: Product[] = [
     title: "Volume III — Man in Practice",
     subtitle: "Relationships, work, wealth, and legacy",
     price: 39,
-    cover: "/covers/vol3.webp",
+    cover: "/covers/vol3-3d.webp",
     color: "#1b4332",
     gumroadUrl: "https://thekingsmanual.gumroad.com/l/wsohc",
     description:
@@ -296,7 +296,7 @@ export const WORKBOOK = {
   slug: "workbook",
   title: "The Companion Workbook",
   subtitle: "128 pages of reflection prompts and exercises — free",
-  cover: "/covers/workbook.webp",
+  cover: "/covers/workbook-3d.webp",
   gumroadUrl: "https://thekingsmanual.gumroad.com/l/xpieta",
 };
 
