@@ -154,6 +154,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Lifestyle */}
+        <section className="border-b border-line bg-ink py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal className="mx-auto mb-12 max-w-xl text-center">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
+                Built to Be Used
+              </p>
+              <h2 className="font-display text-2xl leading-snug text-white md:text-3xl">
+                Not a book you read once and shelve.
+              </h2>
+            </Reveal>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <Reveal className="overflow-hidden rounded-[8px] border border-line-dark">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/lifestyle/lifestyle-hands.webp"
+                  alt="Reading The King's Manual at a desk"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+              </Reveal>
+              <Reveal delay={0.08} className="overflow-hidden rounded-[8px] border border-line-dark">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/lifestyle/lifestyle-holding.webp"
+                  alt="Holding the complete 3-volume set"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
         {/* Use cases */}
         <section className="border-b border-line py-20">
           <div className="mx-auto max-w-4xl px-6">
