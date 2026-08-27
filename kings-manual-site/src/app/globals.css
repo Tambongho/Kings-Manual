@@ -47,6 +47,27 @@ body {
   font-family: var(--font-body);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--burgundy);
+  color: white;
+}
+
+.hero-shell {
+  background:
+    linear-gradient(rgba(20, 22, 21, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 22, 21, 0.035) 1px, transparent 1px),
+    var(--paper-2);
+  background-size: 48px 48px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
 .font-display {
   font-family: var(--font-display);
   font-weight: 600;
@@ -83,4 +104,18 @@ body {
 
 .animate-marquee {
   animation: marquee 42s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
