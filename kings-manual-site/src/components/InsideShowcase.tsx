@@ -1,5 +1,3 @@
-import Reveal from "@/components/Reveal";
-
 const INSIGHTS = [
   {
     chapter: "Chapter 25",
@@ -26,40 +24,23 @@ const INSIGHTS = [
 
 export default function InsideShowcase() {
   return (
-    <section className="border-b border-line bg-paper py-20">
-      <div className="mx-auto max-w-5xl px-6">
-        <Reveal className="mb-12 text-center">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-            Inside the Manual
-          </p>
-          <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
-            Three things most men believe that the research doesn&rsquo;t
-            support.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-foreground/70">
-            A sample of what every chapter does: takes something you&rsquo;ve
-            probably heard, and replaces it with what the evidence actually
-            says.
-          </p>
-        </Reveal>
-        <div className="grid gap-6 md:grid-cols-3">
-          {INSIGHTS.map((item, i) => (
-            <Reveal key={item.chapter} delay={i * 0.1} className="h-full">
-              <div className="flex h-full flex-col rounded-[8px] border border-line bg-background p-6">
-                <p className="text-xs font-medium uppercase tracking-[0.15em] text-gold">
-                  {item.chapter}
-                </p>
-                <p className="mt-1 text-xs text-muted">{item.part}</p>
-                <p className="mt-4 font-display text-lg italic leading-snug text-ink/60">
-                  {item.myth}
-                </p>
-                <div className="my-4 h-px w-8 bg-gold/40" />
-                <p className="text-[15px] leading-relaxed text-foreground/80">
-                  {item.truth}
-                </p>
-              </div>
-            </Reveal>
+    <section id="preview" className="border-b border-line bg-paper py-20 md:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-8 border-b border-line pb-10 md:grid-cols-[0.7fr_1.3fr] md:items-end">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">Read before you buy</p>
+          <div><h2 className="font-display text-4xl leading-tight text-ink">Three extracts from the actual manuscript.</h2><p className="mt-3 max-w-2xl text-foreground/65">These are representative passages, not promotional summaries. Each shows how the Manual tests a familiar claim against published work.</p></div>
+        </div>
+        <div className="mt-10 divide-y divide-line border-y border-line">
+          {INSIGHTS.map((item) => (
+            <article key={item.chapter} className="grid gap-5 py-8 md:grid-cols-[190px_1fr] md:gap-10">
+              <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">{item.chapter}</p><p className="mt-2 text-xs leading-5 text-muted">{item.part}</p></div>
+              <div><h3 className="font-display text-2xl italic text-ink">{item.myth}</h3><p className="mt-4 max-w-3xl text-[16px] leading-7 text-foreground/78">{item.truth}</p></div>
+            </article>
           ))}
+        </div>
+        <div className="mt-8 flex flex-col justify-between gap-4 text-sm text-foreground/60 sm:flex-row sm:items-center">
+          <p>Published independently by The King&rsquo;s Manual editorial project. Sources are attributed within the chapters.</p>
+          <a href="#contents" className="shrink-0 font-semibold text-ink underline decoration-gold/50 underline-offset-4">Review the complete contents</a>
         </div>
       </div>
     </section>

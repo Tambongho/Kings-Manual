@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { BUNDLE } from "@/lib/products";
 
 export default function SiteHeader() {
@@ -24,10 +23,7 @@ export default function SiteHeader() {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    <header
       className={`sticky top-0 z-50 border-b transition-all duration-300 ${
         scrolled
           ? "border-[#d7d1c6] bg-white/95 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] backdrop-blur-md"
@@ -91,11 +87,8 @@ export default function SiteHeader() {
         </div>
       </div>
       {menuOpen && (
-        <motion.div
+        <div
           id="mobile-navigation"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
           className="mt-4 space-y-1 border-t border-[#d7d1c6] px-6 pt-4 pb-2 md:hidden"
         >
           {navItems.map((item) => (
@@ -111,8 +104,8 @@ export default function SiteHeader() {
           <a href={BUNDLE.gumroadUrl} className="mt-3 block bg-ink px-5 py-3 text-center text-sm font-semibold text-white">
             Get the Set — ${BUNDLE.price}
           </a>
-        </motion.div>
+        </div>
       )}
-    </motion.header>
+    </header>
   );
 }

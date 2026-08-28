@@ -5,7 +5,6 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import BuyButton from "@/components/BuyButton";
 import Reveal from "@/components/Reveal";
-import TiltCard from "@/components/TiltCard";
 import TableOfContents from "@/components/TableOfContents";
 import { ALL_PRODUCTS, getProduct, getParts } from "@/lib/products";
 
@@ -62,7 +61,6 @@ export default async function ProductPage({
             </Link>
             <div className="mt-8 grid gap-12 md:grid-cols-2">
               <Reveal className="mx-auto w-full max-w-sm">
-                <TiltCard maxTilt={6}>
                   <Image
                     src={product.cover}
                     alt={product.title}
@@ -71,7 +69,6 @@ export default async function ProductPage({
                     priority
                     className="w-full drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
                   />
-                </TiltCard>
               </Reveal>
               <Reveal delay={0.1}>
                 {isBundle && (

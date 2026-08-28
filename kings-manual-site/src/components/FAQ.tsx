@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 type FAQItem = {
   id: string;
@@ -77,15 +76,7 @@ export default function FAQ() {
             >
               <div className="flex items-center gap-5 py-5 sm:gap-6">
                 <div className="relative flex h-9 w-9 flex-shrink-0 items-center justify-center sm:h-10 sm:w-10">
-                  <motion.div
-                    className="absolute inset-0 rounded-full bg-gold"
-                    initial={false}
-                    animate={{
-                      scale: isActive ? 1 : isHovered ? 0.85 : 0,
-                      opacity: isActive ? 1 : isHovered ? 0.15 : 0,
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  />
+                  <div className={`absolute inset-0 rounded-full bg-gold transition-all ${isActive ? "scale-100 opacity-100" : isHovered ? "scale-75 opacity-15" : "scale-0 opacity-0"}`} />
                   <span
                     className={`relative z-10 text-sm font-medium tracking-wide transition-colors duration-200 ${
                       isActive ? "text-white" : "text-ink/40"
@@ -95,50 +86,30 @@ export default function FAQ() {
                   </span>
                 </div>
 
-                <motion.h3
-                  animate={{ x: isActive || isHovered ? 4 : 0 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                <h3
                   className={`font-display text-base transition-colors duration-200 sm:text-lg ${
                     isActive || isHovered ? "text-ink" : "text-ink/60"
                   }`}
                 >
                   {item.question}
-                </motion.h3>
+                </h3>
 
-                <motion.div
-                  className="ml-auto flex h-7 w-7 flex-shrink-0 items-center justify-center text-gold"
-                  animate={{ rotate: isActive ? 45 : 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
+                <div className={`ml-auto flex h-7 w-7 flex-shrink-0 items-center justify-center text-gold transition-transform ${isActive ? "rotate-45" : ""}`}>
                   +
-                </motion.div>
+                </div>
               </div>
 
               <div className="absolute bottom-0 left-0 right-0 h-px bg-[#d7d1c6]" />
-              <motion.div
-                className="absolute bottom-0 left-0 h-px origin-left bg-gold"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: isActive ? 1 : isHovered ? 0.25 : 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              />
+              <div className={`absolute bottom-0 left-0 h-px origin-left bg-gold transition-transform ${isActive ? "w-full" : isHovered ? "w-1/4" : "w-0"}`} />
             </button>
 
-            <AnimatePresence initial={false}>
-              {isActive && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  id={`answer-${item.id}`}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
+            {isActive && (
+                <div id={`answer-${item.id}`}>
                   <p className="py-2 pb-6 pl-14 pr-4 text-sm leading-relaxed text-ink/55 sm:pl-16">
                     {item.answer}
                   </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                </div>
+            )}
           </div>
         );
       })}

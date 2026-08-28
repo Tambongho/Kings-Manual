@@ -1,21 +1,13 @@
-import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import Image from "next/image";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
-import TiltCard from "@/components/TiltCard";
 import Hero from "@/components/Hero";
 import InsideShowcase from "@/components/InsideShowcase";
 import ThreeVolumes from "@/components/ThreeVolumes";
 import TableOfContents from "@/components/TableOfContents";
 import FAQ from "@/components/FAQ";
 import { BUNDLE, VOLUMES, WORKBOOK, getParts } from "@/lib/products";
-import { STATS } from "@/lib/stats";
-
-const PROBLEMS = [
-  "Fitness advice rarely connects to relationships. Career advice rarely connects to identity. Financial advice rarely connects to the kind of life the money is meant to support.",
-  "Every source has an angle: the supplement company wants to sell you supplements, the guru wants to sell you a course, the influencer wants a following.",
-];
 
 const FRAMEWORK = [
   {
@@ -46,15 +38,10 @@ const USE_CASES = [
     volume: "Volume I",
   },
   {
-    text: "You're stalling before a hard conversation. Learn why waiting to feel confident has it backwards (Ch. 25)",
-    volume: "Volume I",
-  },
-  {
     text: "You feel like you're drifting. Build purpose the way the evidence says it actually forms — gradually, not in an epiphany (Ch. 22)",
     volume: "Volume I",
   },
   { text: "Prepare for a negotiation with a framework, not guesswork", volume: "Volume III" },
-  { text: "Build a plan toward financial independence, decade by decade", volume: "Volume III" },
 ];
 
 const ALL_PARTS = getParts(BUNDLE);
@@ -77,53 +64,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats strip */}
-        <section className="border-b border-line bg-paper">
-          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 py-10 sm:grid-cols-4">
-            {STATS.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08} className="text-center">
-                <p className="font-display text-3xl text-gold md:text-4xl">
-                  {s.value}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-ink/50">
-                  {s.label}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
-        {/* Problem */}
-        <section className="border-b border-line py-20">
-          <div className="mx-auto max-w-4xl px-6">
-            <Reveal className="text-center">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                The Problem
-              </p>
-              <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
-                Most men are building a life from disconnected advice.
-              </h2>
-            </Reveal>
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
-              {PROBLEMS.map((p, i) => (
-                <Reveal key={p} delay={i * 0.08}>
-                  <div className="h-full rounded-[8px] border border-line bg-paper p-6">
-                    <p className="text-[17px] leading-relaxed text-foreground/75">
-                      {p}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Framework */}
         <section className="border-b border-line bg-paper py-20">
           <div className="mx-auto max-w-5xl px-6">
             <Reveal className="mb-14 text-center">
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                How It&rsquo;s Built
+                The chapter method
               </p>
               <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
                 A consistent framework in every chapter.
@@ -154,13 +100,13 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="border-b border-line py-16">
-          <div className="mx-auto grid max-w-5xl gap-8 px-6 md:grid-cols-[0.8fr_1.2fr] md:items-start">
-            <div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">Editorial standard</p><h2 className="mt-3 font-display text-3xl text-ink">Claims you can trace, not slogans you have to trust.</h2></div>
-            <div className="space-y-4 text-[16px] leading-7 text-foreground/75"><p>Chapters separate historical context, scientific evidence, psychological interpretation, and practical application. Named sources—including Albert Bandura, Phillippa Lally, and Viktor Frankl—are surfaced in the sample material rather than hidden behind vague “research says” language.</p><p>The Manual is an independent educational reference. It does not replace medical, mental-health, legal, or financial advice. Start with the free workbook and inspect all 116 chapter titles before purchasing.</p></div>
+            <div className="mt-14 grid gap-6 border-t border-line pt-10 md:grid-cols-[0.8fr_1.2fr]">
+              <h3 className="font-display text-2xl text-ink">Claims you can trace.</h3>
+              <div className="space-y-3 text-sm leading-6 text-foreground/70">
+                <p>Named sources—including Albert Bandura, Phillippa Lally, and Viktor Frankl—appear in the sample material instead of being hidden behind vague “research says” language.</p>
+                <p>The Manual is an independent educational reference, not medical, mental-health, legal, or financial advice.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -184,7 +130,7 @@ export default function Home() {
           <div className="mx-auto max-w-4xl px-6">
             <Reveal className="mb-10 text-center">
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                What It&rsquo;s For
+                In practice
               </p>
               <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
                 The moment you actually need it, this is what it&rsquo;s
@@ -243,26 +189,18 @@ export default function Home() {
           />
           <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
             <Reveal className="mx-auto w-full max-w-md">
-              <TiltCard maxTilt={6}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={BUNDLE.cover}
-                  alt={BUNDLE.title}
-                  className="w-full drop-shadow-[0_30px_70px_rgba(0,0,0,0.2)]"
-                />
-              </TiltCard>
+              <Image src={BUNDLE.cover} alt={BUNDLE.title} width={1421} height={809} className="w-full drop-shadow-[0_30px_70px_rgba(0,0,0,0.18)]" />
             </Reveal>
             <Reveal delay={0.15}>
               <span className="inline-block rounded-full bg-gold/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.3em] text-gold">
                 The Complete Set
               </span>
               <h2 className="mt-4 font-display text-3xl text-ink md:text-4xl">
-                Stop assembling your worldview from fragments.
+                The complete three-volume reference.
               </h2>
               <p className="mt-4 leading-relaxed text-foreground/75">
-                {BUNDLE.description} One reference, cited and cross-checked,
-                that you open when the question actually matters — instead of
-                trusting whichever algorithm served you an opinion this week.
+                {BUNDLE.description} Purchase once and return to it whenever a
+                question becomes practical.
               </p>
               <ul className="mt-6 space-y-2 text-[17px] text-foreground/75">
                 {BUNDLE.highlights.map((h) => (
@@ -295,12 +233,12 @@ export default function Home() {
                 Prefer one volume? Buy{" "}
                 {VOLUMES.map((v, i) => (
                   <span key={v.slug}>
-                    <Link
-                      href={`/products/${v.slug}`}
+                    <a
+                      href={v.gumroadUrl}
                       className="text-gold underline decoration-gold/40 underline-offset-2 hover:text-ink"
                     >
                       Volume {["I", "II", "III"][i]}
-                    </Link>
+                    </a>
                     {i < VOLUMES.length - 1 ? " · " : " "}
                   </span>
                 ))}
@@ -360,34 +298,6 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* Final CTA */}
-        <section className="border-t border-line py-24">
-          <Reveal className="mx-auto max-w-2xl px-6 text-center">
-            <h2 className="font-display text-3xl leading-snug text-ink md:text-4xl">
-              You&rsquo;re going to face these questions either way.
-            </h2>
-            <p className="mx-auto mt-5 max-w-lg text-foreground/70">
-              The only choice is whether you meet them with a coherent,
-              evidence-based reference — or the same scattered fragments
-              you&rsquo;ve been running on. 116 chapters. Three volumes. One
-              price, paid once.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a
-                href={BUNDLE.gumroadUrl}
-                className="rounded-[6px] bg-ink px-8 py-3.5 text-[16px] font-medium tracking-wide text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-graphite"
-              >
-                Get the Complete Set — ${BUNDLE.price}
-              </a>
-              <a
-                href={WORKBOOK.gumroadUrl}
-                className="rounded-[6px] border border-ink px-8 py-3.5 text-[16px] tracking-wide text-ink transition-all duration-200 hover:bg-ink hover:text-white"
-              >
-                Download the Free Workbook
-              </a>
-            </div>
-          </Reveal>
-        </section>
       </main>
       <SiteFooter />
     </>
