@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
@@ -7,7 +8,7 @@ import InsideShowcase from "@/components/InsideShowcase";
 import ThreeVolumes from "@/components/ThreeVolumes";
 import TableOfContents from "@/components/TableOfContents";
 import FAQ from "@/components/FAQ";
-import { BUNDLE, WORKBOOK, getParts } from "@/lib/products";
+import { BUNDLE, VOLUMES, WORKBOOK, getParts } from "@/lib/products";
 import { STATS } from "@/lib/stats";
 
 const PROBLEMS = [
@@ -299,7 +300,19 @@ export default function Home() {
                 Clicking the button securely opens checkout.
               </p>
               <p className="mt-2 text-xs text-muted">
-                Prefer one volume? Each is available individually for $39.
+                Prefer one volume? Buy{" "}
+                {VOLUMES.map((v, i) => (
+                  <span key={v.slug}>
+                    <Link
+                      href={`/products/${v.slug}`}
+                      className="text-gold underline decoration-gold/40 underline-offset-2 hover:text-ink"
+                    >
+                      Volume {["I", "II", "III"][i]}
+                    </Link>
+                    {i < VOLUMES.length - 1 ? " · " : " "}
+                  </span>
+                ))}
+                individually for $39 each.
               </p>
             </Reveal>
           </div>
