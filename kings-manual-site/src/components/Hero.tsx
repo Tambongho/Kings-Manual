@@ -18,27 +18,27 @@ export default function Hero() {
           <span>Three-volume reference</span>
         </div>
 
-        <div className="relative min-h-[700px] overflow-hidden bg-ink shadow-[0_24px_80px_rgba(34,29,22,0.14)] sm:min-h-[680px] lg:min-h-[720px]">
+        <div className="relative min-h-[720px] overflow-hidden bg-[#e8e1d5] shadow-[0_24px_80px_rgba(34,29,22,0.12)] sm:min-h-[680px] lg:min-h-[700px]">
           <Image
-            src="/lifestyle/hero-editorial-v2.webp"
+            src="/lifestyle/hero-editorial-v3.webp"
             alt="The three King's Manual volumes photographed in a modern study"
             fill
             priority
             sizes="(max-width: 1380px) 100vw, 1380px"
-            className="object-cover object-[56%_center] sm:object-center"
+            className="object-cover object-[64%_center] sm:object-center"
           />
 
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,14,13,0.92)_0%,rgba(12,14,13,0.75)_38%,rgba(12,14,13,0.2)_67%,rgba(12,14,13,0.05)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(90deg,rgba(247,244,237,0.98)_0%,rgba(247,244,237,0.94)_40%,rgba(247,244,237,0.35)_59%,transparent_75%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(0deg,rgba(247,244,237,0.96)_0%,rgba(247,244,237,0.72)_37%,transparent_68%)] sm:hidden" />
 
           <div className="relative z-10 flex min-h-[700px] flex-col justify-end px-6 pb-8 pt-28 sm:min-h-[680px] sm:px-10 sm:pb-10 lg:min-h-[720px] lg:max-w-[660px] lg:justify-center lg:px-16 lg:py-16">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#e6c884] sm:text-sm">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-gold sm:text-sm">
               The complete encyclopedia of men
             </p>
-            <h1 className="text-balance font-display text-[46px] leading-[0.94] tracking-[-0.03em] text-white sm:text-6xl lg:text-[72px]">
+            <h1 className="text-balance font-display text-[46px] leading-[0.94] tracking-[-0.03em] text-ink sm:text-6xl lg:text-[72px]">
               One clear reference for a life with many moving parts.
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+            <p className="mt-6 max-w-xl text-base leading-7 text-foreground/75 sm:text-lg sm:leading-8">
               Biology, character, relationships, work, money, fatherhood, and
               legacy&mdash;organized across three evidence-led volumes designed
               to be used, marked up, and returned to for years.
@@ -47,22 +47,22 @@ export default function Hero() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={BUNDLE.gumroadUrl}
-                className="inline-flex min-h-13 items-center justify-center bg-white px-7 py-4 text-[15px] font-semibold tracking-wide text-ink transition-colors hover:bg-[#e6c884]"
+                className="inline-flex min-h-13 items-center justify-center bg-ink px-7 py-4 text-[15px] font-semibold tracking-wide text-white transition-colors hover:bg-burgundy"
               >
                 Get all three volumes &mdash; ${BUNDLE.price}
               </a>
               <a
                 href="#contents"
-                className="group inline-flex min-h-13 items-center justify-center gap-2 border border-white/40 px-6 py-4 text-[15px] font-medium text-white transition-colors hover:border-white hover:bg-white/10"
+                className="group inline-flex min-h-13 items-center justify-center gap-2 border border-ink/30 px-6 py-4 text-[15px] font-medium text-ink transition-colors hover:border-ink hover:bg-white/35"
               >
                 Look inside first
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
-            <p className="mt-4 text-sm text-white/55">
+            <p className="mt-4 text-sm text-muted">
               Instant PDF delivery &middot; One-time payment &middot; Read on any device
             </p>
-            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/20 pt-5 text-xs uppercase tracking-[0.13em] text-white/62">
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-ink/15 pt-5 text-xs uppercase tracking-[0.13em] text-ink/55">
               <span>500+ pages</span><span>15 parts</span><span>116 chapters</span>
             </div>
           </div>

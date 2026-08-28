@@ -72,7 +72,7 @@ export default function Home() {
 
         <section className="border-b border-line bg-burgundy py-8 text-white">
           <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 text-center md:flex-row md:text-left">
-            <div><p className="font-display text-2xl">All three volumes, one permanent reference.</p><p className="mt-1 text-sm text-white/65">Save $20 · Companion workbook included · Instant Gumroad delivery</p></div>
+            <div><p className="font-display text-2xl">All three volumes, one permanent reference.</p><p className="mt-1 text-sm text-white/65">Save $20 · Companion workbook included · Instant secure delivery</p></div>
             <a href={BUNDLE.gumroadUrl} className="shrink-0 bg-white px-6 py-3 text-sm font-semibold text-ink hover:bg-gold">Get the Complete Set — ${BUNDLE.price}</a>
           </div>
         </section>

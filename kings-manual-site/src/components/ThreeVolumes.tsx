@@ -51,7 +51,7 @@ export default function ThreeVolumes() {
                 <span>${volume.price}</span>
               </div>
               <a href={volume.gumroadUrl} className="mt-5 inline-flex items-center text-sm font-semibold text-ink hover:text-gold">
-                Buy Volume {index + 1} on Gumroad <span aria-hidden className="ml-2">→</span>
+                Buy Volume {index + 1} <span aria-hidden className="ml-2">→</span>
               </a>
             </article>
           ))}

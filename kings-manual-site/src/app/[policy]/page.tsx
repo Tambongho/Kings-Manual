@@ -5,7 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 
 const POLICIES = {
   privacy: { title: "Privacy Policy", intro: "We collect only the information needed to operate the site, deliver purchases, and improve the customer experience.", sections: [
-    ["Information we receive", "Purchases are processed by Gumroad. Gumroad may provide order details such as your name, email, product purchased, and transaction status. We never receive or store your full payment-card details."],
+    ["Information we receive", "Purchases are processed by our secure payment provider, which may provide order details such as your name, email, product purchased, and transaction status. We never receive or store your full payment-card details."],
     ["How information is used", "We use order information to deliver products, provide support, prevent fraud, and communicate essential purchase updates. Optional analytics measures aggregate site and checkout performance."],
     ["Sharing and retention", "Information is shared only with service providers needed to operate the store. We do not sell personal information. Records are retained only as reasonably necessary for support, accounting, legal, and fraud-prevention purposes."],
   ] },
@@ -16,8 +16,8 @@ const POLICIES = {
   ] },
   refunds: { title: "Refund Policy", intro: "We want customers to know exactly what they are buying and to receive the files they paid for.", sections: [
     ["Before purchasing", "Review the product description, complete table of contents, format, and free workbook before buying. All paid products are digital PDFs; no physical books are shipped."],
-    ["Download or billing problems", "If a file is missing, corrupted, duplicated, or materially different from its description, email us with your Gumroad receipt. We will provide a working replacement or review the purchase for a refund."],
-    ["Refund requests", "Because files are delivered immediately, change-of-mind refunds are not guaranteed. Eligibility and processing are handled through Gumroad and applicable consumer law. Contact us promptly so we can investigate."],
+    ["Download or billing problems", "If a file is missing, corrupted, duplicated, or materially different from its description, email us with your purchase receipt. We will provide a working replacement or review the purchase for a refund."],
+    ["Refund requests", "Because files are delivered immediately, change-of-mind refunds are not guaranteed. Eligibility and processing are handled through our payment provider and applicable consumer law. Contact us promptly so we can investigate."],
   ] },
 } as const;
 

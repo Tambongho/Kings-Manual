@@ -51,7 +51,7 @@ const ITEMS: FAQItem[] = [
     number: "06",
     question: "What if I have a download or billing problem?",
     answer:
-      "Email info@kingsmanual.com with your Gumroad receipt. We will replace a missing or corrupted file or review the transaction under our refund policy. Gumroad handles checkout, receipts, and payment processing.",
+      "Email info@kingsmanual.com with your purchase receipt. We will replace a missing or corrupted file or review the transaction under our refund policy. Our secure payment provider handles checkout, receipts, and payment processing.",
   },
 ];
 
