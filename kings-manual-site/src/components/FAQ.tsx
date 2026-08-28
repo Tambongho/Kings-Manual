@@ -37,7 +37,7 @@ const ITEMS: FAQItem[] = [
     number: "04",
     question: "Is it worth $97?",
     answer:
-      "That's less than a single session with most trainers, coaches, or therapists — except you keep this, and you can come back to it whenever you need it. It's a one-time payment, not a subscription.",
+      "The set combines 116 chapters and more than 500 pages for $20 less than buying the volumes separately. Review the full contents and start with the free 128-page workbook before deciding. It is a one-time purchase, not a subscription.",
   },
   {
     id: "workbook-relation",
@@ -45,6 +45,13 @@ const ITEMS: FAQItem[] = [
     question: "How does the free Workbook relate to the volumes?",
     answer:
       "The Workbook is the map — a 12-week action plan with reflection prompts and exercises. The three volumes are the territory: the full research, history, and reasoning the workbook draws from. Most people start with the free workbook, then go deeper with the volumes when they want the underlying material.",
+  },
+  {
+    id: "refunds",
+    number: "06",
+    question: "What if I have a download or billing problem?",
+    answer:
+      "Email info@kingsmanual.com with your Gumroad receipt. We will replace a missing or corrupted file or review the transaction under our refund policy. Gumroad handles checkout, receipts, and payment processing.",
   },
 ];
 
@@ -61,6 +68,8 @@ export default function FAQ() {
         return (
           <div key={item.id} className="relative">
             <button
+              aria-expanded={isActive}
+              aria-controls={`answer-${item.id}`}
               onClick={() => setActiveId(isActive ? null : item.id)}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
@@ -118,6 +127,7 @@ export default function FAQ() {
               {isActive && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
+                  id={`answer-${item.id}`}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}

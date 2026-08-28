@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import Image from "next/image";
 import SiteFooter from "@/components/SiteFooter";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
@@ -14,8 +15,6 @@ import { STATS } from "@/lib/stats";
 const PROBLEMS = [
   "Fitness advice rarely connects to relationships. Career advice rarely connects to identity. Financial advice rarely connects to the kind of life the money is meant to support.",
   "Every source has an angle: the supplement company wants to sell you supplements, the guru wants to sell you a course, the influencer wants a following.",
-  "You're making decisions about your body, your money, and your relationships without a coherent framework for any of them.",
-  "Nobody handed you a manual. You've been piecing manhood together from fragments — a podcast here, a book there, trial and error everywhere.",
 ];
 
 const FRAMEWORK = [
@@ -55,11 +54,7 @@ const USE_CASES = [
     volume: "Volume I",
   },
   { text: "Prepare for a negotiation with a framework, not guesswork", volume: "Volume III" },
-  { text: "Think clearly about marriage and fatherhood before the moment arrives", volume: "Volume III" },
-  { text: "Understand grief, depression, anxiety, and resilience in plain language", volume: "Volume I" },
   { text: "Build a plan toward financial independence, decade by decade", volume: "Volume III" },
-  { text: "Weigh a career or business decision against 2,500 years of tested judgment", volume: "Volume III" },
-  { text: "Know what you want your life to have meant, before you run out of time to act on it", volume: "Volume III" },
 ];
 
 const ALL_PARTS = getParts(BUNDLE);
@@ -74,6 +69,13 @@ export default function Home() {
         <InsideShowcase />
 
         <ThreeVolumes />
+
+        <section className="border-b border-line bg-burgundy py-8 text-white">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 text-center md:flex-row md:text-left">
+            <div><p className="font-display text-2xl">All three volumes, one permanent reference.</p><p className="mt-1 text-sm text-white/65">Save $20 · Companion workbook included · Instant Gumroad delivery</p></div>
+            <a href={BUNDLE.gumroadUrl} className="shrink-0 bg-white px-6 py-3 text-sm font-semibold text-ink hover:bg-gold">Get the Complete Set — ${BUNDLE.price}</a>
+          </div>
+        </section>
 
         {/* Stats strip */}
         <section className="border-b border-line bg-paper">
@@ -155,35 +157,25 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="border-b border-line py-16">
+          <div className="mx-auto grid max-w-5xl gap-8 px-6 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">Editorial standard</p><h2 className="mt-3 font-display text-3xl text-ink">Claims you can trace, not slogans you have to trust.</h2></div>
+            <div className="space-y-4 text-[16px] leading-7 text-foreground/75"><p>Chapters separate historical context, scientific evidence, psychological interpretation, and practical application. Named sources—including Albert Bandura, Phillippa Lally, and Viktor Frankl—are surfaced in the sample material rather than hidden behind vague “research says” language.</p><p>The Manual is an independent educational reference. It does not replace medical, mental-health, legal, or financial advice. Start with the free workbook and inspect all 116 chapter titles before purchasing.</p></div>
+          </div>
+        </section>
+
         {/* Lifestyle */}
-        <section className="border-b border-line bg-ink py-20 md:py-28">
-          <div className="mx-auto max-w-6xl px-6">
-            <Reveal className="mx-auto mb-12 max-w-xl text-center">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                Built to Be Used
-              </p>
-              <h2 className="font-display text-2xl leading-snug text-white md:text-3xl">
-                Not a book you read once and shelve.
-              </h2>
+        <section className="border-b border-line bg-[#ece7de] py-20 md:py-28">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-[1.25fr_0.75fr]">
+            <Reveal className="overflow-hidden bg-white shadow-[0_20px_60px_rgba(35,29,22,0.12)]">
+              <Image src="/lifestyle/desk-editorial-v2.webp" alt="The King's Manual volumes on a real working desk" width={1920} height={1280} className="aspect-[16/11] w-full object-cover" />
             </Reveal>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <Reveal className="overflow-hidden rounded-[8px] border border-line-dark">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/lifestyle/lifestyle-hands.webp"
-                  alt="Reading The King's Manual at a desk"
-                  className="aspect-[16/9] w-full object-cover"
-                />
-              </Reveal>
-              <Reveal delay={0.08} className="overflow-hidden rounded-[8px] border border-line-dark">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/lifestyle/lifestyle-holding.webp"
-                  alt="Holding the complete 3-volume set"
-                  className="aspect-[16/9] w-full object-cover"
-                />
-              </Reveal>
-            </div>
+            <Reveal delay={0.08}>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-gold">Built to be used</p>
+              <h2 className="font-display text-4xl leading-tight text-ink">A working reference, not shelf decoration.</h2>
+              <p className="mt-5 leading-7 text-foreground/70">Open it when a decision is real: before a difficult conversation, while building a financial plan, or when the advice around you stops fitting together.</p>
+              <a href="#contents" className="mt-7 inline-flex border-b border-ink pb-1 text-sm font-semibold text-ink hover:border-gold hover:text-gold">Browse all 116 chapters</a>
+            </Reveal>
           </div>
         </section>
 

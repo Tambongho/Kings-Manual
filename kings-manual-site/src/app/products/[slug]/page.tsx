@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -40,6 +41,7 @@ export default async function ProductPage({
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Book", name: product.title, description: product.description, image: `https://kingsmanual.com${product.cover}`, offers: { "@type": "Offer", priceCurrency: "USD", price: product.price, availability: "https://schema.org/InStock", url: product.gumroadUrl } }).replace(/</g, "\\u003c") }} />
       <SiteHeader />
       <main className="flex-1">
         <section className="relative overflow-hidden">
@@ -61,10 +63,12 @@ export default async function ProductPage({
             <div className="mt-8 grid gap-12 md:grid-cols-2">
               <Reveal className="mx-auto w-full max-w-sm">
                 <TiltCard maxTilt={6}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={product.cover}
                     alt={product.title}
+                    width={720}
+                    height={900}
+                    priority
                     className="w-full drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
                   />
                 </TiltCard>
@@ -158,10 +162,11 @@ export default async function ProductPage({
                       className="group block rounded-sm border border-[#d7d1c6] bg-white p-4 transition-colors duration-300 hover:border-gold/60"
                     >
                       <div className="mx-auto flex h-24 w-full items-center justify-center">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <Image
                           src={p.cover}
                           alt={p.title}
+                          width={240}
+                          height={300}
                           className="max-h-24 max-w-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:-translate-y-1"
                         />
                       </div>

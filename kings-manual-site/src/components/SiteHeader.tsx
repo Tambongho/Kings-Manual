@@ -17,7 +17,7 @@ export default function SiteHeader() {
   }, []);
 
   const navItems = [
-    { href: "#contents", label: "The Volumes" },
+    { href: "#volumes", label: "The Volumes" },
     { href: "#offer", label: "The Complete Set" },
     { href: "#workbook", label: "Free Workbook" },
     { href: "#faq", label: "FAQ" },
@@ -59,6 +59,8 @@ export default function SiteHeader() {
           </a>
           <button
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMenuOpen((v) => !v)}
             className="p-2 text-ink/70 md:hidden"
           >
@@ -90,6 +92,7 @@ export default function SiteHeader() {
       </div>
       {menuOpen && (
         <motion.div
+          id="mobile-navigation"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
@@ -105,6 +108,9 @@ export default function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <a href={BUNDLE.gumroadUrl} className="mt-3 block bg-ink px-5 py-3 text-center text-sm font-semibold text-white">
+            Get the Set — ${BUNDLE.price}
+          </a>
         </motion.div>
       )}
     </motion.header>

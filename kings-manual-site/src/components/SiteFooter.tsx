@@ -1,4 +1,5 @@
 import { BUNDLE, VOLUMES } from "@/lib/products";
+import Link from "next/link";
 
 export default function SiteFooter() {
   return (
@@ -21,24 +22,24 @@ export default function SiteFooter() {
             </p>
             <ul className="space-y-2">
               <li>
-                <a href="#contents" className="hover:text-gold">
+                <Link href="/#volumes" className="hover:text-gold">
                   The Volumes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contents" className="hover:text-gold">
+                <Link href="/#contents" className="hover:text-gold">
                   Complete Contents
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#workbook" className="hover:text-gold">
+                <Link href="/#workbook" className="hover:text-gold">
                   Free Workbook
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#faq" className="hover:text-gold">
+                <Link href="/#faq" className="hover:text-gold">
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -78,6 +79,9 @@ export default function SiteFooter() {
                   Support
                 </a>
               </li>
+              <li><Link href="/privacy" className="hover:text-gold">Privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-gold">Terms</Link></li>
+              <li><Link href="/refunds" className="hover:text-gold">Refunds</Link></li>
             </ul>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { ArrowRight, Check } from "lucide-react";
+import Image from "next/image";
 import { BUNDLE } from "@/lib/products";
 
 const INCLUDES = [
@@ -9,26 +10,26 @@ const INCLUDES = [
 
 export default function Hero() {
   return (
-    <section className="hero-shell border-b border-line">
-      <div className="mx-auto max-w-[1240px] px-6 pb-14 pt-10 md:pb-20 md:pt-16">
-        <div className="mb-9 flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/55">
-          <span>Independent reference work</span>
+    <section className="border-b border-line bg-[#f7f5f0]">
+      <div className="mx-auto max-w-[1320px] px-6 pb-12 pt-8 md:pb-16 md:pt-12">
+        <div className="mb-8 flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">
+          <span>Independent publishing</span>
           <span className="h-px flex-1 bg-line" />
-          <span>First edition</span>
+          <span>Three-volume reference</span>
         </div>
 
-        <div className="grid items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-14">
           <div className="max-w-2xl">
-            <p className="mb-5 font-display text-xl italic text-gold">
-              The Complete Encyclopedia of Men
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+              The complete encyclopedia of men
             </p>
-            <h1 className="text-balance font-display text-[48px] leading-[0.98] tracking-[-0.035em] text-ink sm:text-6xl lg:text-[74px]">
-              A serious reference for the questions that shape a man&rsquo;s life.
+            <h1 className="text-balance font-display text-[48px] leading-[0.96] tracking-[-0.03em] text-ink sm:text-6xl lg:text-[68px]">
+              One clear reference for a life with many moving parts.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-foreground/78">
               Biology, character, relationships, work, money, fatherhood, and
-              legacy&mdash;brought together in one evidence-led, three-volume
-              set. Written to be consulted for years, not skimmed in a weekend.
+              legacy&mdash;organized across three evidence-led volumes designed
+              to be used, marked up, and returned to for years.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -51,19 +52,18 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-5 translate-x-3 translate-y-3 border border-gold/25" />
-            <div className="relative overflow-hidden bg-navy px-5 pb-5 pt-8 sm:px-8 sm:pb-7">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/covers/bundle-3d.webp"
-                alt="The King's Manual complete three-volume set"
-                className="relative z-10 w-full"
+          <div className="relative overflow-hidden rounded-[2px] bg-[#e8e3d9] shadow-[0_24px_80px_rgba(34,29,22,0.13)]">
+              <Image
+                src="/lifestyle/hero-editorial-v2.webp"
+                alt="The three King's Manual volumes photographed in a modern study"
+                width={1920}
+                height={1280}
+                priority
+                className="aspect-[16/11] w-full object-cover"
               />
-              <div className="relative z-10 mt-2 grid gap-3 border-t border-white/15 pt-5 sm:grid-cols-[1fr_auto] sm:items-end">
+              <div className="absolute inset-x-0 bottom-0 grid gap-2 bg-gradient-to-t from-black/75 via-black/45 to-transparent px-6 pb-5 pt-20 sm:grid-cols-[1fr_auto] sm:items-end sm:px-8 sm:pb-7">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#e6c884]">
                     The complete set
                   </p>
                   <p className="mt-1 font-display text-2xl text-white">
@@ -72,7 +72,6 @@ export default function Hero() {
                 </div>
                 <p className="font-display text-4xl text-white">${BUNDLE.price}</p>
               </div>
-            </div>
           </div>
         </div>
 

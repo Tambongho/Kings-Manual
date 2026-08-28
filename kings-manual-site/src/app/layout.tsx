@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Inter } from "next/font/google";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const cormorant = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-cormorant", display: "swap" });
 
 const SITE_URL = "https://kingsmanual.com";
 const TITLE = "The King's Manual — The Complete Encyclopedia of Men";
@@ -57,9 +62,10 @@ export const viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`${inter.variable} ${cormorant.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground font-body">
         {children}
+        <Analytics />
       </body>
     </html>
   );
