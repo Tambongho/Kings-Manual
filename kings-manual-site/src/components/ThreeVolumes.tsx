@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Reveal from "@/components/Reveal";
 import { VOLUMES } from "@/lib/products";
 
 const CATEGORY_LINES = [
@@ -8,48 +10,45 @@ const CATEGORY_LINES = [
 
 export default function ThreeVolumes() {
   return (
-    <section className="border-b border-line bg-ink py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-8 border-b border-white/15 pb-10 md:grid-cols-[0.75fr_1.25fr] md:items-end">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">
-            The architecture
-          </p>
-          <h2 className="max-w-3xl font-display text-4xl leading-[1.05] text-white md:text-5xl">
-            Three distinct books. One continuous education.
+    <section className="border-b border-line-dark bg-ink py-20 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[1fr_1.4fr] md:gap-16">
+        <Reveal>
+          <h2 className="font-display text-3xl leading-tight text-white md:text-4xl">
+            Three volumes.
+            <br />
+            One complete map.
           </h2>
-        </div>
+          <a
+            href="#contents"
+            className="mt-6 inline-block text-sm text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:text-white"
+          >
+            Explore all 116 chapters →
+          </a>
+        </Reveal>
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-white/15 bg-white/15 md:grid-cols-3">
-          {VOLUMES.map((volume, index) => (
-            <article key={volume.slug} className="group bg-ink p-6 md:p-8">
-              <div className="flex items-start justify-between gap-4">
-                <span className="font-display text-5xl text-gold/65">
-                  0{index + 1}
-                </span>
-                <span className="max-w-32 text-right text-[10px] font-semibold uppercase leading-4 tracking-[0.17em] text-white/45">
-                  {CATEGORY_LINES[index]}
-                </span>
-              </div>
-              <div className="mx-auto mt-4 w-[78%] transition-transform duration-500 group-hover:-translate-y-1">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={volume.cover}
-                  alt={volume.title}
-                  className="aspect-[4/5] w-full object-contain drop-shadow-[0_24px_28px_rgba(0,0,0,0.35)]"
-                />
-              </div>
-              <h3 className="mt-7 font-display text-2xl leading-tight text-white">
-                {volume.title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-white/58">
-                {volume.subtitle}
-              </p>
-              <div className="mt-5 flex items-center justify-between border-t border-white/12 pt-4 text-xs text-white/48">
-                <span>{volume.chapters}</span>
-                <span>${volume.price}</span>
-              </div>
-            </article>
-          ))}
+        <div className="grid gap-10 sm:grid-cols-3">
+          {VOLUMES.map((v, i) => {
+            const roman = ["I", "II", "III"][i];
+            return (
+              <Reveal key={v.slug} delay={i * 0.08} className="border-l border-line-dark pl-6">
+                <p className="font-display text-3xl text-gold">{roman}</p>
+                <p className="mt-3 text-sm font-medium uppercase tracking-[0.1em] text-white">
+                  {v.title.split("—")[1]?.trim() ?? v.title}
+                </p>
+                <div className="mt-4 h-px w-8 bg-gold/50" />
+                <p className="mt-4 text-xs uppercase tracking-[0.12em] text-white/50">
+                  {CATEGORY_LINES[i]}
+                </p>
+                <p className="mt-3 text-sm text-white/60">{v.chapters}</p>
+                <Link
+                  href={`/products/${v.slug}`}
+                  className="mt-4 inline-block text-xs uppercase tracking-[0.1em] text-white/50 underline decoration-white/20 underline-offset-4 transition-colors hover:text-gold hover:decoration-gold/40"
+                >
+                  Buy this volume — ${v.price} →
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
