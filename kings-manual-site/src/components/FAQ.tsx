@@ -29,12 +29,12 @@ const ITEMS: FAQItem[] = [
     number: "03",
     question: "Can I buy one volume instead of all three?",
     answer:
-      "Yes — each volume stands on its own at $39: Volume I covers biology and mind, Volume II covers history and philosophy, Volume III covers relationships, work, and wealth. The Complete Set bundles all three for $97 — $117 if bought separately, so you save $20.",
+      "Yes — each volume stands on its own at $79: Volume I covers biology and mind, Volume II covers history and philosophy, Volume III covers relationships, work, and wealth. The Complete Set bundles all three for $197, so you save $40 versus buying separately.",
   },
   {
     id: "worth-it",
     number: "04",
-    question: "Is it worth $97?",
+    question: "Is it worth $197?",
     answer:
       "The set combines 116 chapters and more than 500 pages for $20 less than buying the volumes separately. Review the full contents and start with the free 128-page workbook before deciding. It is a one-time purchase, not a subscription.",
   },
