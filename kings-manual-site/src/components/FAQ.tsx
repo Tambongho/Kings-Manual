@@ -36,7 +36,7 @@ const ITEMS: FAQItem[] = [
     number: "04",
     question: "Is it worth $197?",
     answer:
-      "The set combines 116 chapters and more than 500 pages for $20 less than buying the volumes separately. Review the full contents and start with the free 128-page workbook before deciding. It is a one-time purchase, not a subscription.",
+      "The set combines 116 chapters and more than 500 pages for $40 less than buying the volumes separately. Review the full contents and start with the free 128-page workbook before deciding. It is a one-time purchase, not a subscription.",
   },
   {
     id: "workbook-relation",

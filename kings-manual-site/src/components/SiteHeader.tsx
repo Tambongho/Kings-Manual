@@ -1,110 +1,42 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 import { BUNDLE } from "@/lib/products";
 
+const NAV = [
+  { href: "#volumes", label: "Volumes" },
+  { href: "#inside", label: "Look inside" },
+  { href: "#contents", label: "Contents" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export default function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const navItems = [
-    { href: "#volumes", label: "The Volumes" },
-    { href: "#offer", label: "The Complete Set" },
-    { href: "#workbook", label: "Free Workbook" },
-    { href: "#faq", label: "FAQ" },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "border-[#d7d1c6] bg-white/95 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] backdrop-blur-md"
-          : "border-transparent bg-white/70 py-4 backdrop-blur-sm"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="font-display text-lg tracking-wide text-ink">
-          <span className="text-gold">THE</span> KING&rsquo;S MANUAL
+    <header className="sticky top-0 z-50 border-b border-line/80 bg-background/95 backdrop-blur-xl">
+      <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-6">
+        <Link href="/" className="flex items-center gap-3 text-ink" aria-label="The King's Manual home">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink font-display text-sm text-white">KM</span>
+          <span className="font-display text-[19px] tracking-[0.02em]">The King&rsquo;s Manual</span>
         </Link>
-        <nav className="hidden items-center gap-8 text-sm tracking-wide text-ink/70 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group relative transition-colors hover:text-gold"
-            >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+          {NAV.map((item) => <Link key={item.href} href={item.href} className="text-sm font-medium text-ink/65 transition-colors hover:text-burgundy">{item.label}</Link>)}
         </nav>
-        <div className="flex items-center gap-3">
-          <a
-            href={BUNDLE.gumroadUrl}
-            className="hidden rounded-sm bg-ink px-4 py-2 text-sm tracking-wide text-white transition-all duration-300 hover:bg-gold sm:inline-block"
-          >
-            Get the Set — ${BUNDLE.price}
-          </a>
-          <button
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() => setMenuOpen((v) => !v)}
-            className="p-2 text-ink/70 md:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              {menuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+        <div className="flex items-center gap-2">
+          <a href={BUNDLE.gumroadUrl} className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-burgundy sm:inline-flex">Get the set · ${BUNDLE.price}</a>
+          <button type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)} className="flex h-10 w-10 items-center justify-center rounded-full text-ink md:hidden">
+            {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
           </button>
         </div>
       </div>
-      {menuOpen && (
-        <div
-          id="mobile-navigation"
-          className="mt-4 space-y-1 border-t border-[#d7d1c6] px-6 pt-4 pb-2 md:hidden"
-        >
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="block py-2 text-sm text-ink/70 hover:text-gold"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <a href={BUNDLE.gumroadUrl} className="mt-3 block bg-ink px-5 py-3 text-center text-sm font-semibold text-white">
-            Get the Set — ${BUNDLE.price}
-          </a>
-        </div>
+      {open && (
+        <nav id="mobile-navigation" className="border-t border-line bg-paper px-6 pb-6 pt-3 md:hidden" aria-label="Mobile navigation">
+          {NAV.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="block border-b border-line py-3 text-sm font-medium text-ink">{item.label}</Link>)}
+          <a href={BUNDLE.gumroadUrl} className="mt-5 flex justify-center rounded-full bg-burgundy px-5 py-3 text-sm font-semibold text-white">Get the complete set · ${BUNDLE.price}</a>
+        </nav>
       )}
     </header>
   );

@@ -1,20 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm editorial paper palette */
-  --background: #f3f0e9;
-  --paper-2: #faf8f3;
-  --foreground: #343735;
-  --gold: #a9782c;
-  --gold-hover: #81591f;
-  --navy: #102337;
-  --burgundy: #5a1e23;
-  --forest: #173829;
+  --background: #f3efe7;
+  --paper-2: #f9f6ef;
+  --foreground: #333735;
+  --gold: #aa7b38;
+  --gold-hover: #805820;
+  --navy: #182e43;
+  --burgundy: #792c38;
+  --forest: #1d4033;
   --workbook: #e8e0d1;
-  --ink: #141615;
-  --graphite: #202321;
-  --paper: #ffffff;
-  --line: #d7d1c6;
+  --ink: #121715;
+  --graphite: #252a27;
+  --paper: #fffdf9;
+  --line: #d9d2c6;
   --line-dark: rgba(201, 157, 76, 0.35);
   --muted: #6c6e69;
 }
@@ -44,6 +43,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
 }
 
 html {
@@ -53,6 +53,11 @@ html {
 ::selection {
   background: var(--burgundy);
   color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--burgundy);
+  outline-offset: 4px;
 }
 
 .hero-shell {

@@ -1,58 +1,41 @@
-import { VOLUMES } from "@/lib/products";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { VOLUMES } from "@/lib/products";
 
-const CATEGORY_LINES = [
-  "Body · Mind · Development",
-  "History · Philosophy · Culture",
-  "Relationships · Work · Wealth",
+const DETAILS = [
+  { eyebrow: "Body · mind · development", bg: "bg-[#e8edf2]" },
+  { eyebrow: "History · philosophy · culture", bg: "bg-[#f1e6e5]" },
+  { eyebrow: "Relationships · work · wealth", bg: "bg-[#e5ece7]" },
 ];
 
 export default function ThreeVolumes() {
   return (
-    <section id="volumes" className="scroll-mt-24 border-b border-line bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-8 border-b border-line pb-10 md:grid-cols-[0.75fr_1.25fr] md:items-end">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">
-            The architecture
-          </p>
-          <h2 className="max-w-3xl font-display text-4xl leading-[1.05] text-ink md:text-5xl">
-            Choose the volume that meets you where you are.
-          </h2>
+    <section id="volumes" className="scroll-mt-24 bg-paper py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-burgundy">Featured collection</p>
+            <h2 className="mt-4 max-w-3xl text-balance font-display text-4xl leading-none text-ink md:text-6xl">Three volumes. One connected life.</h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-muted">Begin with the area you need now, or choose the complete collection for the full reference.</p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {VOLUMES.map((volume, index) => (
-            <article key={volume.slug} className="group border-t border-line pt-6">
-              <div className="flex items-start justify-between gap-4">
-                <span className="font-display text-5xl text-gold/65">
-                  0{index + 1}
-                </span>
-                <span className="max-w-32 text-right text-[10px] font-semibold uppercase leading-4 tracking-[0.17em] text-ink/45">
-                  {CATEGORY_LINES[index]}
-                </span>
+            <article key={volume.slug} className="group overflow-hidden rounded-[18px] border border-line bg-white transition-transform duration-300 hover:-translate-y-1">
+              <div className={`relative flex min-h-[390px] items-center justify-center p-8 ${DETAILS[index].bg}`}>
+                <span className="absolute left-6 top-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink/45">Volume 0{index + 1}</span>
+                <Image src={volume.cover} alt={volume.title} width={720} height={900} className="h-[315px] w-auto object-contain drop-shadow-[0_24px_26px_rgba(24,25,22,0.22)] transition-transform duration-300 group-hover:scale-[1.025]" />
               </div>
-              <div className="mx-auto mt-4 w-[78%] transition-transform duration-500 group-hover:-translate-y-1">
-                <Image
-                  src={volume.cover}
-                  alt={volume.title}
-                  width={720}
-                  height={900}
-                  className="aspect-[4/5] w-full object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.18)]"
-                />
+              <div className="p-6 md:p-7">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-burgundy">{DETAILS[index].eyebrow}</p>
+                <h3 className="mt-3 font-display text-[28px] leading-tight text-ink">{volume.title.replace(/^Volume [IVX]+ — /, "")}</h3>
+                <p className="mt-3 min-h-12 text-sm leading-6 text-muted">{volume.subtitle}</p>
+                <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
+                  <div><span className="text-xl font-semibold text-ink">${volume.price}</span><span className="ml-2 text-xs text-muted">digital edition</span></div>
+                  <a href={volume.gumroadUrl} aria-label={`Buy ${volume.title}`} className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-white transition-colors hover:bg-burgundy"><ArrowUpRight className="h-4 w-4" aria-hidden /></a>
+                </div>
               </div>
-              <h3 className="mt-7 font-display text-2xl leading-tight text-ink">
-                {volume.title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-foreground/65">
-                {volume.subtitle}
-              </p>
-              <div className="mt-5 flex items-center justify-between border-t border-line pt-4 text-xs text-ink/50">
-                <span>{volume.chapters}</span>
-                <span>${volume.price}</span>
-              </div>
-              <a href={volume.gumroadUrl} className="mt-5 inline-flex items-center text-sm font-semibold text-ink hover:text-gold">
-                Buy Volume {index + 1} <span aria-hidden className="ml-2">→</span>
-              </a>
             </article>
           ))}
         </div>

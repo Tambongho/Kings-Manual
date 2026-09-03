@@ -1,47 +1,25 @@
-import SiteHeader from "@/components/SiteHeader";
+import { ArrowRight, Check, Download } from "lucide-react";
 import Image from "next/image";
-import SiteFooter from "@/components/SiteFooter";
-import Reveal from "@/components/Reveal";
+import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
 import InsideShowcase from "@/components/InsideShowcase";
-import ThreeVolumes from "@/components/ThreeVolumes";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 import TableOfContents from "@/components/TableOfContents";
-import FAQ from "@/components/FAQ";
+import ThreeVolumes from "@/components/ThreeVolumes";
 import { BUNDLE, VOLUMES, WORKBOOK, getParts } from "@/lib/products";
 
-const FRAMEWORK = [
-  {
-    step: "01",
-    title: "Historical background",
-    body: "How the question has been understood across cultures and eras.",
-  },
-  {
-    step: "02",
-    title: "Scientific evidence",
-    body: "What the research actually shows — not folklore, not hype.",
-  },
-  {
-    step: "03",
-    title: "Psychological and cultural context",
-    body: "How the topic shows up in a man's inner life and social world.",
-  },
-  {
-    step: "04",
-    title: "Practical application",
-    body: "What to actually do with the information.",
-  },
+const CATEGORIES = [
+  { number: "01", title: "Foundations", body: "Body, brain, health, identity, discipline, and development.", color: "bg-navy", volume: VOLUMES[0] },
+  { number: "02", title: "Civilization", body: "History, philosophy, faith, institutions, and the ideas that shaped men.", color: "bg-burgundy", volume: VOLUMES[1] },
+  { number: "03", title: "Practice", body: "Relationships, career, leadership, wealth, service, and legacy.", color: "bg-forest", volume: VOLUMES[2] },
 ];
 
-const USE_CASES = [
-  {
-    text: "Your habit keeps failing around day three. Learn why the 21-day rule is a myth — and what actually builds one (Ch. 26)",
-    volume: "Volume I",
-  },
-  {
-    text: "You feel like you're drifting. Build purpose the way the evidence says it actually forms — gradually, not in an epiphany (Ch. 22)",
-    volume: "Volume I",
-  },
-  { text: "Prepare for a negotiation with a framework, not guesswork", volume: "Volume III" },
+const METHOD = [
+  ["01", "Context", "Start with the history behind the question."],
+  ["02", "Evidence", "Separate published research from familiar claims."],
+  ["03", "Meaning", "Place the evidence in psychological and cultural context."],
+  ["04", "Practice", "Turn the conclusion into something you can use."],
 ];
 
 const ALL_PARTS = getParts(BUNDLE);
@@ -52,252 +30,104 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <Hero />
+        <ThreeVolumes />
+
+        <section className="bg-background py-8 md:py-12">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+            <div className="relative min-h-[650px] overflow-hidden rounded-[22px] bg-ink md:min-h-[690px]">
+              <Image src="/lifestyle/reader-volume3-v1.webp" alt="A reader studying The King's Manual Volume III at home" fill sizes="(min-width: 1440px) 1392px, 100vw" className="object-cover object-[62%_center] md:object-right" />
+              <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(13,18,16,0.94)_0%,rgba(13,18,16,0.48)_54%,transparent_82%)] md:bg-[linear-gradient(90deg,rgba(13,18,16,0.93)_0%,rgba(13,18,16,0.76)_42%,rgba(13,18,16,0.08)_72%)]" />
+              <div className="relative z-10 flex min-h-[650px] items-end px-7 py-10 text-white md:min-h-[690px] md:items-center md:px-16 lg:px-20">
+                <div className="max-w-[570px]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">A reference that lives with you</p>
+                  <h2 className="mt-5 text-balance font-display text-4xl leading-[0.98] md:text-6xl">For the questions that do not fit into one category.</h2>
+                  <p className="mt-6 max-w-lg text-base leading-7 text-white/72">The Manual connects the biological, historical, and practical parts of a man&rsquo;s life—so advice about health, work, relationships, and purpose stops competing for attention.</p>
+                  <a href="#inside" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-background">Look inside the manuscript <ArrowRight className="h-4 w-4" aria-hidden /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-background py-20 md:py-28">
+          <div className="mx-auto max-w-7xl px-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-burgundy">Explore by subject</p>
+            <div className="mt-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <h2 className="max-w-3xl font-display text-4xl leading-none text-ink md:text-6xl">Start where life is asking more of you.</h2>
+              <p className="max-w-sm text-sm leading-6 text-muted">Each volume stands on its own and connects naturally to the next.</p>
+            </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {CATEGORIES.map((category) => (
+                <a key={category.title} href={category.volume.gumroadUrl} className={`${category.color} group flex min-h-[330px] flex-col rounded-[18px] p-7 text-white transition-transform duration-300 hover:-translate-y-1 md:p-8`}>
+                  <div className="flex items-center justify-between"><span className="text-xs font-semibold tracking-[0.18em] text-white/55">{category.number}</span><ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden /></div>
+                  <div className="mt-auto"><h3 className="font-display text-4xl">{category.title}</h3><p className="mt-3 max-w-xs text-sm leading-6 text-white/68">{category.body}</p><p className="mt-7 text-sm font-semibold">Volume {category.number.slice(-1)} · ${category.volume.price}</p></div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <InsideShowcase />
 
-        <ThreeVolumes />
-
-        <section className="border-b border-line bg-burgundy py-8 text-white">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 text-center md:flex-row md:text-left">
-            <div><p className="font-display text-2xl">All three volumes, one permanent reference.</p><p className="mt-1 text-sm text-white/65">Save $40 vs. buying separately · Companion workbook included · Instant secure delivery</p></div>
-            <a href={BUNDLE.gumroadUrl} className="shrink-0 bg-white px-6 py-3 text-sm font-semibold text-ink hover:bg-gold">Get the Complete Set — ${BUNDLE.price}</a>
-          </div>
-        </section>
-
-        {/* Framework */}
-        <section className="border-b border-line bg-paper py-20">
-          <div className="mx-auto max-w-5xl px-6">
-            <Reveal className="mb-14 text-center">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                The chapter method
-              </p>
-              <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
-                A consistent framework in every chapter.
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-foreground/70">
-                The same four-part structure, chapter after chapter — so
-                disconnected knowledge becomes one usable reference.
-              </p>
-            </Reveal>
-            <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-              {FRAMEWORK.map((f, i) => (
-                <Reveal key={f.step} delay={i * 0.08} className="relative">
-                  <p className="font-display text-4xl text-gold/40">{f.step}</p>
-                  <p className="mt-3 font-display text-lg text-ink">
-                    {f.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/65">
-                    {f.body}
-                  </p>
-                  {i < FRAMEWORK.length - 1 && (
-                    <span
-                      aria-hidden
-                      className="absolute right-[-1rem] top-2 hidden text-gold/30 md:block"
-                    >
-                      →
-                    </span>
-                  )}
-                </Reveal>
-              ))}
-            </div>
-            <div className="mt-14 grid gap-6 border-t border-line pt-10 md:grid-cols-[0.8fr_1.2fr]">
-              <h3 className="font-display text-2xl text-ink">Claims you can trace.</h3>
-              <div className="space-y-3 text-sm leading-6 text-foreground/70">
-                <p>Named sources—including Albert Bandura, Phillippa Lally, and Viktor Frankl—appear in the sample material instead of being hidden behind vague “research says” language.</p>
-                <p>The Manual is an independent educational reference, not medical, mental-health, legal, or financial advice.</p>
+        <section className="bg-background py-20 md:py-24">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="rounded-[22px] border border-line bg-paper p-7 md:p-12">
+              <div className="grid gap-8 border-b border-line pb-10 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-burgundy">The chapter method</p>
+                <h2 className="font-display text-4xl leading-none text-ink md:text-5xl">The same clear structure, chapter after chapter.</h2>
+              </div>
+              <div className="grid gap-0 md:grid-cols-4">
+                {METHOD.map(([number, title, body], index) => (
+                  <div key={number} className={`py-7 md:px-6 md:py-10 ${index > 0 ? "border-t border-line md:border-l md:border-t-0" : ""}`}>
+                    <span className="text-xs font-semibold tracking-[0.18em] text-burgundy">{number}</span><h3 className="mt-5 font-display text-2xl text-ink">{title}</h3><p className="mt-3 text-sm leading-6 text-muted">{body}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Lifestyle */}
-        <section className="border-b border-line bg-[#ece7de] py-20 md:py-28">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-[1.25fr_0.75fr]">
-            <Reveal className="overflow-hidden bg-white shadow-[0_20px_60px_rgba(35,29,22,0.12)]">
-              <Image src="/lifestyle/desk-editorial-v2.webp" alt="The King's Manual volumes on a real working desk" width={1920} height={1280} className="aspect-[16/11] w-full object-cover" />
-            </Reveal>
-            <Reveal delay={0.08}>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-gold">Built to be used</p>
-              <h2 className="font-display text-4xl leading-tight text-ink">A working reference, not shelf decoration.</h2>
-              <p className="mt-5 leading-7 text-foreground/70">Open it when a decision is real: before a difficult conversation, while building a financial plan, or when the advice around you stops fitting together.</p>
-              <a href="#contents" className="mt-7 inline-flex border-b border-ink pb-1 text-sm font-semibold text-ink hover:border-gold hover:text-gold">Browse all 116 chapters</a>
-            </Reveal>
+        <section id="contents" className="scroll-mt-24 bg-paper py-20 md:py-28">
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.75fr_1.25fr]">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.22em] text-burgundy">Complete contents</p><h2 className="mt-4 font-display text-4xl leading-none text-ink md:text-5xl">116 chapters across 15 parts.</h2><p className="mt-5 max-w-md text-sm leading-6 text-muted">Open any section to see the chapters inside. The first three parts are shown by default; the complete table expands in place.</p></div>
+            <TableOfContents parts={ALL_PARTS} />
           </div>
         </section>
 
-        {/* Use cases */}
-        <section className="border-b border-line py-20">
-          <div className="mx-auto max-w-4xl px-6">
-            <Reveal className="mb-10 text-center">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                In practice
-              </p>
-              <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
-                The moment you actually need it, this is what it&rsquo;s
-                there for.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <ul className="divide-y divide-line border-y border-line">
-                {USE_CASES.map((u) => (
-                  <li
-                    key={u.text}
-                    className="flex items-center justify-between gap-4 py-4"
-                  >
-                    <span className="text-[17px] text-foreground/80">
-                      {u.text}
-                    </span>
-                    <span className="whitespace-nowrap text-xs uppercase tracking-[0.15em] text-gold">
-                      {u.volume}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Complete contents */}
-        <section id="contents" className="border-b border-line bg-paper py-20">
-          <div className="mx-auto max-w-3xl px-6">
-            <Reveal className="mb-10 text-center">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                Complete Contents
-              </p>
-              <h2 className="font-display text-2xl leading-snug text-ink md:text-3xl">
-                Explore all 116 chapters.
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-foreground/70">
-                Fifteen parts across three volumes. Expand any part to see
-                every chapter it contains.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <TableOfContents parts={ALL_PARTS} />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* Complete-set offer */}
-        <section
-          id="offer"
-          className="relative overflow-hidden border-b border-line py-20"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-gold/10 blur-[120px]"
-          />
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
-            <Reveal className="mx-auto w-full max-w-md">
-              <Image src={BUNDLE.cover} alt={BUNDLE.title} width={1421} height={809} className="w-full drop-shadow-[0_30px_70px_rgba(0,0,0,0.18)]" />
-            </Reveal>
-            <Reveal delay={0.15}>
-              <span className="inline-block rounded-full bg-gold/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                The Complete Set
-              </span>
-              <h2 className="mt-4 font-display text-3xl text-ink md:text-4xl">
-                The complete three-volume reference.
-              </h2>
-              <p className="mt-4 leading-relaxed text-foreground/75">
-                {BUNDLE.description} Purchase once and return to it whenever a
-                question becomes practical.
-              </p>
-              <ul className="mt-6 space-y-2 text-[17px] text-foreground/75">
-                {BUNDLE.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2">
-                    <span className="mt-1 text-gold">✦</span>
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 flex items-center gap-4">
-                <span className="font-display text-3xl text-gold">
-                  ${BUNDLE.price}
-                </span>
-                <span className="text-ink/40 line-through">
-                  ${BUNDLE.compareAt}
-                </span>
-                <span className="text-xs text-muted">one-time payment</span>
+        <section id="offer" className="bg-background py-8 md:py-12">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
+            <div className="relative overflow-hidden rounded-[22px] bg-[#e8decd] px-7 py-12 md:px-14 md:py-16 lg:min-h-[610px] lg:px-20">
+              <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+                <div className="relative z-10">
+                  <span className="inline-flex rounded-full bg-burgundy px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">Best value</span>
+                  <h2 className="mt-5 max-w-xl font-display text-5xl leading-[0.95] text-ink md:text-6xl">Keep the complete reference within reach.</h2>
+                  <p className="mt-6 max-w-lg text-sm leading-6 text-ink/65">All three digital volumes, the companion workbook, and every future revision in one permanent collection.</p>
+                  <ul className="mt-7 space-y-3">
+                    {BUNDLE.highlights.map((item) => <li key={item} className="flex items-start gap-3 text-sm text-ink/72"><Check className="mt-0.5 h-4 w-4 shrink-0 text-burgundy" aria-hidden />{item}</li>)}
+                  </ul>
+                  <div className="mt-8 flex items-end gap-3"><span className="text-4xl font-semibold text-ink">${BUNDLE.price}</span><span className="pb-1 text-lg text-ink/35 line-through">${BUNDLE.compareAt}</span><span className="pb-1 text-xs text-muted">one-time</span></div>
+                  <a href={BUNDLE.gumroadUrl} className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-burgundy">Get the complete set <ArrowRight className="h-4 w-4" aria-hidden /></a>
+                </div>
+                <Image src={BUNDLE.cover} alt="The complete three-volume King's Manual set" width={1421} height={809} className="relative z-0 w-full mix-blend-multiply drop-shadow-[0_34px_34px_rgba(29,24,18,0.18)]" />
               </div>
-              <a
-                href={BUNDLE.gumroadUrl}
-                className="mt-6 inline-block rounded-[6px] bg-ink px-7 py-3.5 text-[16px] font-medium tracking-wide text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-graphite"
-              >
-                Get the Complete Set — ${BUNDLE.price}
-              </a>
-              <p className="mt-3 text-xs text-muted">
-                Instant PDF delivery after checkout, readable on any device.
-                Clicking the button securely opens checkout.
-              </p>
-              <p className="mt-2 text-xs text-muted">
-                Prefer one volume? Buy{" "}
-                {VOLUMES.map((v, i) => (
-                  <span key={v.slug}>
-                    <a
-                      href={v.gumroadUrl}
-                      className="text-gold underline decoration-gold/40 underline-offset-2 hover:text-ink"
-                    >
-                      Volume {["I", "II", "III"][i]}
-                    </a>
-                    {i < VOLUMES.length - 1 ? " · " : " "}
-                  </span>
-                ))}
-                individually for $79 each.
-              </p>
-            </Reveal>
+            </div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section id="faq" className="py-20">
-          <div className="mx-auto max-w-3xl px-6">
-            <Reveal className="mb-10 text-center">
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                Questions
-              </p>
-              <h2 className="mt-3 font-display text-3xl text-ink">
-                Before you decide
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <FAQ />
-            </Reveal>
+        <section id="faq" className="scroll-mt-24 bg-paper py-20 md:py-28">
+          <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[0.75fr_1.25fr]">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.22em] text-burgundy">Questions</p><h2 className="mt-4 font-display text-4xl leading-none text-ink md:text-5xl">Everything to know before you buy.</h2></div>
+            <FAQ />
           </div>
         </section>
 
-        {/* Free workbook */}
-        <section id="workbook" className="border-t border-line bg-paper py-20">
-          <Reveal className="mx-auto grid max-w-5xl items-center gap-10 rounded-[8px] border border-line bg-background p-10 md:grid-cols-[auto_1fr] md:p-14">
-            <div className="mx-auto w-44">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={WORKBOOK.cover}
-                alt={WORKBOOK.title}
-                className="w-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
-              />
-            </div>
-            <div>
-              <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-gold">
-                Free &middot; No Credit Card
-              </p>
-              <h2 className="font-display text-2xl text-ink">
-                Start with the Companion Workbook.
-              </h2>
-              <p className="mt-3 leading-relaxed text-foreground/70">
-                {WORKBOOK.subtitle}. A no-risk way to experience the King&rsquo;s
-                Manual approach before you commit to a volume — reflection
-                prompts and exercises drawn straight from the encyclopedia.
-              </p>
-              <a
-                href={WORKBOOK.gumroadUrl}
-                className="mt-6 inline-block rounded-[6px] border border-ink px-7 py-3.5 text-[16px] tracking-wide text-ink transition-all duration-200 hover:bg-ink hover:text-white"
-              >
-                Download the Free Workbook
-              </a>
-            </div>
-          </Reveal>
+        <section id="workbook" className="bg-background py-16 md:py-20">
+          <div className="mx-auto grid max-w-6xl items-center gap-9 px-6 md:grid-cols-[220px_1fr_auto]">
+            <Image src={WORKBOOK.cover} alt={WORKBOOK.title} width={600} height={780} className="mx-auto h-[230px] w-auto object-contain drop-shadow-[0_18px_22px_rgba(25,21,18,0.18)]" />
+            <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-burgundy">Free companion workbook</p><h2 className="mt-3 font-display text-3xl text-ink">Experience the method before you commit.</h2><p className="mt-3 max-w-xl text-sm leading-6 text-muted">128 pages of reflection prompts and practical exercises drawn from the three-volume collection.</p></div>
+            <a href={WORKBOOK.gumroadUrl} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-white"><Download className="h-4 w-4" aria-hidden /> Download free</a>
+          </div>
         </section>
-
       </main>
       <SiteFooter />
     </>
