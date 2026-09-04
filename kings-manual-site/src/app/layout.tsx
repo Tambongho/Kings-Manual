@@ -9,10 +9,10 @@ const cormorant = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-cor
 
 const SITE_URL = "https://kingsmanual.com";
 
-// Same Pixel already configured under Gumroad's third-party analytics
-// (app.gumroad.com/settings/third_party_analytics), so site visits and
-// Gumroad checkouts land in one unified Meta Pixel / Events Manager view.
-const META_PIXEL_ID = "1199907354282353";
+// The King's Manual Pixel below matches the Pixel configured under Gumroad's
+// third-party analytics (app.gumroad.com/settings/third_party_analytics), so
+// site visits and Gumroad checkouts land in one Events Manager view.
+const META_PIXEL_ID = "2181789655728713";
 
 const TITLE = "The King's Manual | The Complete Encyclopedia of Men";
 const DESCRIPTION =
