@@ -22,7 +22,15 @@ const POLICIES = {
 } as const;
 
 export function generateStaticParams() { return Object.keys(POLICIES).map((policy) => ({ policy })); }
-export async function generateMetadata({ params }: { params: Promise<{ policy: string }> }): Promise<Metadata> { const { policy } = await params; return { title: POLICIES[policy as keyof typeof POLICIES]?.title ?? "Policy" }; }
+export async function generateMetadata({ params }: { params: Promise<{ policy: string }> }): Promise<Metadata> {
+  const { policy } = await params;
+  const content = POLICIES[policy as keyof typeof POLICIES];
+  return {
+    title: content?.title ?? "Policy",
+    description: content?.intro,
+    alternates: { canonical: `/${policy}` },
+  };
+}
 
 export default async function PolicyPage({ params }: { params: Promise<{ policy: string }> }) {
   const { policy } = await params; const content = POLICIES[policy as keyof typeof POLICIES]; if (!content) notFound();

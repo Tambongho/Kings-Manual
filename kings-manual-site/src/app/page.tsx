@@ -1,4 +1,5 @@
 import { ArrowRight, Check, Download } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import FAQ from "@/components/FAQ";
 import Hero from "@/components/Hero";
@@ -8,6 +9,23 @@ import SiteHeader from "@/components/SiteHeader";
 import TableOfContents from "@/components/TableOfContents";
 import ThreeVolumes from "@/components/ThreeVolumes";
 import { BUNDLE, VOLUMES, WORKBOOK, getParts } from "@/lib/products";
+
+const SITE_URL = "https://kingsmanual.com";
+
+export const metadata: Metadata = {
+  title: "The King's Manual | 3-Volume Encyclopedia for Men",
+  description:
+    "Explore The King's Manual: 116 chapters on men's biology, psychology, history, philosophy, relationships, career, wealth, fatherhood, and legacy.",
+  alternates: { canonical: "/" },
+  keywords: [
+    "encyclopedia for men",
+    "best books for men",
+    "men's self improvement books",
+    "male psychology book",
+    "books about manhood",
+    "men's relationships career and wealth",
+  ],
+};
 
 const CATEGORIES = [
   { number: "01", title: "Foundations", body: "Body, brain, health, identity, discipline, and development.", color: "bg-navy", volume: VOLUMES[0] },
@@ -24,9 +42,75 @@ const METHOD = [
 
 const ALL_PARTS = getParts(BUNDLE);
 
+const HOME_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "The King's Manual",
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.svg`,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "The King's Manual",
+      description: metadata.description,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BookSeries",
+      "@id": `${SITE_URL}/#book-series`,
+      name: "The King's Manual: The Complete Encyclopedia of Men",
+      description: metadata.description,
+      url: SITE_URL,
+      image: `${SITE_URL}${BUNDLE.cover}`,
+      inLanguage: "en",
+      numberOfItems: VOLUMES.length,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      hasPart: VOLUMES.map((volume) => ({
+        "@type": ["Book", "Product"],
+        "@id": `${SITE_URL}/products/${volume.slug}#book`,
+        name: volume.title,
+        description: volume.description,
+        image: `${SITE_URL}${volume.cover}`,
+        url: `${SITE_URL}/products/${volume.slug}`,
+        bookFormat: "https://schema.org/EBook",
+        inLanguage: "en",
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          price: volume.price,
+          availability: "https://schema.org/InStock",
+          url: volume.gumroadUrl,
+        },
+      })),
+    },
+    {
+      "@type": "ItemList",
+      name: "The King's Manual volumes",
+      itemListElement: VOLUMES.map((volume, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/products/${volume.slug}`,
+        name: volume.title,
+      })),
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(HOME_STRUCTURED_DATA).replace(/</g, "\\u003c"),
+        }}
+      />
       <SiteHeader />
       <main className="flex-1">
         <Hero />
@@ -108,7 +192,9 @@ export default function Home() {
                   <div className="mt-8 flex items-end gap-3"><span className="text-4xl font-semibold text-ink">${BUNDLE.price}</span><span className="pb-1 text-lg text-ink/35 line-through">${BUNDLE.compareAt}</span><span className="pb-1 text-xs text-muted">one-time</span></div>
                   <a href={BUNDLE.gumroadUrl} className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-burgundy">Get the complete set <ArrowRight className="h-4 w-4" aria-hidden /></a>
                 </div>
-                <Image src={BUNDLE.cover} alt="The complete three-volume King's Manual set" width={1421} height={809} className="relative z-0 w-full mix-blend-multiply drop-shadow-[0_34px_34px_rgba(29,24,18,0.18)]" />
+                <a href={BUNDLE.gumroadUrl} aria-label="Buy The King's Manual complete three-volume set" className="relative z-0 block w-full">
+                  <Image src={BUNDLE.cover} alt="The complete three-volume King's Manual set" width={1421} height={809} className="w-full mix-blend-multiply drop-shadow-[0_34px_34px_rgba(29,24,18,0.18)]" />
+                </a>
               </div>
             </div>
           </div>
@@ -123,7 +209,9 @@ export default function Home() {
 
         <section id="workbook" className="bg-background py-16 md:py-20">
           <div className="mx-auto grid max-w-6xl items-center gap-9 px-6 md:grid-cols-[220px_1fr_auto]">
-            <Image src={WORKBOOK.cover} alt={WORKBOOK.title} width={600} height={780} className="mx-auto h-[230px] w-auto object-contain drop-shadow-[0_18px_22px_rgba(25,21,18,0.18)]" />
+            <a href={WORKBOOK.gumroadUrl} aria-label={`Download ${WORKBOOK.title}`} className="mx-auto block">
+              <Image src={WORKBOOK.cover} alt={WORKBOOK.title} width={600} height={780} className="h-[230px] w-auto object-contain drop-shadow-[0_18px_22px_rgba(25,21,18,0.18)]" />
+            </a>
             <div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-burgundy">Free companion workbook</p><h2 className="mt-3 font-display text-3xl text-ink">Experience the method before you commit.</h2><p className="mt-3 max-w-xl text-sm leading-6 text-muted">128 pages of reflection prompts and practical exercises drawn from the three-volume collection.</p></div>
             <a href={WORKBOOK.gumroadUrl} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-white"><Download className="h-4 w-4" aria-hidden /> Download free</a>
           </div>

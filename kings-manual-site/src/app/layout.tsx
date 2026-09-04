@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const cormorant = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-cormorant", display: "swap" });
 
 const SITE_URL = "https://kingsmanual.com";
-const TITLE = "The King's Manual — The Complete Encyclopedia of Men";
+const TITLE = "The King's Manual | The Complete Encyclopedia of Men";
 const DESCRIPTION =
-  "A three-volume encyclopedia covering the biology, history, philosophy, and practical mastery of manhood. 116 chapters. One complete system.";
+  "A three-volume digital encyclopedia for men covering biology, psychology, history, philosophy, relationships, work, wealth, fatherhood, and legacy.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -24,14 +24,33 @@ export const metadata: Metadata = {
     "encyclopedia of men",
     "self improvement for men",
     "male biology and psychology",
+    "books about masculinity",
+    "men's personal development books",
+    "men's relationships and career",
+    "digital encyclopedia for men",
     "The King's Manual",
   ],
   authors: [{ name: "The King's Manual" }],
-  alternates: { canonical: "/" },
+  creator: "The King's Manual",
+  publisher: "The King's Manual",
+  category: "Books",
+  formatDetection: { email: false, address: false, telephone: false },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: "The King's Manual",
+    locale: "en_US",
     title: TITLE,
     description: DESCRIPTION,
     images: [

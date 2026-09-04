@@ -25,7 +25,9 @@ export default function ThreeVolumes() {
             <article key={volume.slug} className="group overflow-hidden rounded-[18px] border border-line bg-white transition-transform duration-300 hover:-translate-y-1">
               <div className={`relative flex min-h-[390px] items-center justify-center p-8 ${DETAILS[index].bg}`}>
                 <span className="absolute left-6 top-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink/45">Volume 0{index + 1}</span>
-                <Image src={volume.cover} alt={volume.title} width={720} height={900} className="h-[315px] w-auto object-contain drop-shadow-[0_24px_26px_rgba(24,25,22,0.22)] transition-transform duration-300 group-hover:scale-[1.025]" />
+                <a href={volume.gumroadUrl} aria-label={`Buy ${volume.title}`} className="block">
+                  <Image src={volume.cover} alt={volume.title} width={720} height={900} className="h-[315px] w-auto object-contain drop-shadow-[0_24px_26px_rgba(24,25,22,0.22)] transition-transform duration-300 group-hover:scale-[1.025]" />
+                </a>
               </div>
               <div className="p-6 md:p-7">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-burgundy">{DETAILS[index].eyebrow}</p>

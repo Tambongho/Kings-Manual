@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
@@ -16,13 +17,39 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
+  const canonical = `/products/${product.slug}`;
+  const description = `${product.subtitle}. ${product.chapters}. Instant digital access with lifetime updates from The King's Manual.`;
   return {
-    title: `${product.title} — The King's Manual`,
-    description: product.description,
+    title: product.title,
+    description,
+    alternates: { canonical },
+    keywords: [
+      product.title,
+      product.subtitle,
+      "The King's Manual",
+      "digital book for men",
+      "men's personal development",
+    ],
+    category: "Books",
+    openGraph: {
+      type: product.slug === "bundle" ? "website" : "book",
+      url: canonical,
+      title: product.title,
+      description,
+      siteName: "The King's Manual",
+      locale: "en_US",
+      images: [{ url: product.cover, alt: product.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.title,
+      description,
+      images: [product.cover],
+    },
   };
 }
 
@@ -37,10 +64,74 @@ export default async function ProductPage({
 
   const isBundle = product.slug === "bundle";
   const parts = getParts(product);
+  const productUrl = `https://kingsmanual.com/products/${product.slug}`;
+  const productSchema = {
+    "@type": isBundle ? "Product" : ["Book", "Product"],
+    "@id": `${productUrl}#product`,
+    name: product.title,
+    alternateName: product.subtitle,
+    description: product.description,
+    image: `https://kingsmanual.com${product.cover}`,
+    url: productUrl,
+    sku: `KM-${product.slug.toUpperCase()}`,
+    category: isBundle ? "Digital book collection" : "Digital book",
+    brand: { "@type": "Brand", name: "The King's Manual" },
+    publisher: { "@type": "Organization", name: "The King's Manual" },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: product.price,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      url: product.gumroadUrl,
+    },
+    ...(isBundle
+      ? {
+          hasPart: ALL_PRODUCTS.filter((item) => item.slug !== "bundle").map(
+            (item) => ({
+              "@type": "Book",
+              name: item.title,
+              url: `https://kingsmanual.com/products/${item.slug}`,
+            }),
+          ),
+        }
+      : {
+          bookFormat: "https://schema.org/EBook",
+          inLanguage: "en",
+          isPartOf: {
+            "@type": "BookSeries",
+            name: "The King's Manual: The Complete Encyclopedia of Men",
+            url: "https://kingsmanual.com",
+          },
+        }),
+  };
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      productSchema,
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://kingsmanual.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: product.title,
+            item: productUrl,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Book", name: product.title, description: product.description, image: `https://kingsmanual.com${product.cover}`, offers: { "@type": "Offer", priceCurrency: "USD", price: product.price, availability: "https://schema.org/InStock", url: product.gumroadUrl } }).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
       <SiteHeader />
       <main className="flex-1">
         <section className="relative overflow-hidden">
@@ -61,6 +152,7 @@ export default async function ProductPage({
             </Link>
             <div className="mt-8 grid gap-12 md:grid-cols-2">
               <Reveal className="mx-auto w-full max-w-sm">
+                <a href={product.gumroadUrl} aria-label={`Buy ${product.title}`} className="block">
                   <Image
                     src={product.cover}
                     alt={product.title}
@@ -69,6 +161,7 @@ export default async function ProductPage({
                     priority
                     className="w-full drop-shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
                   />
+                </a>
               </Reveal>
               <Reveal delay={0.1}>
                 {isBundle && (
